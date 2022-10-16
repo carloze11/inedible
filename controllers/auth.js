@@ -3,7 +3,9 @@ const bcrypt = require('bcrypt')
 
 
 exports.getLogin = (req, res) => {
-    res.send('I am the login get page')
+    res.render('login', {
+        title: 'Login'
+    })
 }
 
 exports.postLogin = (req, res) => {
