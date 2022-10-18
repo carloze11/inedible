@@ -17,7 +17,9 @@ exports.getLogout = (req, res) => {
 }
 
 exports.getSignup = (req, res) => {
-    res.send('This is the signup get page')
+    res.render('signup', {
+        title: 'Signup'
+    })
 }
 
 exports.postSignup = (req, res) => {
