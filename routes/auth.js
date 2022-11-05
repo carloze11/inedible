@@ -15,9 +15,10 @@ router.get(
 );
 
 // Logout user
-router.get("/auth/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
+router.get("/logout", (req, res) => {
+    req.logout(() => {
+        res.redirect("/login");
+    });
 });
 
 // router.post("/login", authController.postLogin);
