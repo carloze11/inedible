@@ -1,4 +1,7 @@
-
 exports.getHomePage = (req, res) => {
-    res.render('index')
-}
+    res.render("index");
+};
+
+exports.getDashboard = (req, res) => {
+    res.render("dashboard");
+};

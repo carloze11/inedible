@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
-    <script defer src="https://cdn.tailwindcss.com"></script>
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+  <title>InEdible</title>
 </head>
+
 <body>
-    <div class="hero min-h-screen bg-base-200">
-        <div class="hero-content flex-col w-6/12">
-          <div class="text-center lg:text-left">
-            <h1 class="text-5xl font-bold">Login</h1>
-          </div>
-          <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div class="card-body">
-              <div class="form-control">
-                <label class="label">
-                  <span class="label-text">Username</span>
-                </label>
-                <input type="text" placeholder="username" class="input input-bordered" />
-              </div>
-              <div class="form-control">
-                <label class="label">
-                  <span class="label-text">Password</span>
-                </label>
-                <input type="text" placeholder="password" class="input input-bordered" />
-                <label class="label">
-                  <a href="#" class="label-text-alt link link-hover">Forgot password? (coming soon)</a> 
-                  <a href="./signup" class="label-text-alt link link-hover">Sign up</a>
-                </label>
-              </div>
-              <div class="form-control mt-6">
-                <button class="btn btn-primary">Login</button>
-              </div>
-            </div>
-          </div>
+  <div class="container login-container">
+    <div class="card">
+      <div class="card-content">
+        <h3><i class="fa-solid fa-skull-crossbones"></i>InEdible</h3>
+        <div class="section">
+          <p class="lead">A fullstack web application designed to help users steer clear of any foods that may trigger
+            their food allergies or intolerances. </p>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+          <a href="/auth/google" class="btn red darken-1">
+            <i class="fab fa-google left"></i> Log In With Google
+          </a>
         </div>
       </div>
+    </div>
+  </div>
 </body>
+
 </html>
