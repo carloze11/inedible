@@ -1,5 +1,5 @@
 exports.getHomePage = (req, res) => {
-    res.render("index");
+    res.render("login");
 };
 
 exports.getDashboard = (req, res) => {
