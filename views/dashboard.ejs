@@ -12,11 +12,22 @@
             </tr>
         </thead>
         <tbody>
-            <% each foods {%>
+            <% for(let i=0; i < foods.length; i++) {%>
                 <tr>
-                    <td><a href="/foods/<%=_id%>"></a>
+                    <td>
+                        <a href="/foods/<%= foods[i]_id%>"></a>
                         <%= name %>
                     </td>
+                    <td>
+                        <img class="img-fluid" src="<%= foods[i].image %> ">
+                    </td>
+                    <td>
+                        <h1>Ingredients</h1>
+                        <span>
+                            <%= foods[i].ingredients %>
+                        </span>
+                    </td>
+                    <td></td>
                 </tr>
                 <% } %>
         </tbody>
