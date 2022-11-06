@@ -8,6 +8,7 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 //load config
 dotenv.config({ path: "./config/config.env" });
@@ -32,6 +33,7 @@ app.use(
         secret: "keyboard cat",
         resave: false,
         saveUninitialized: true,
+        store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
     })
 );
 
