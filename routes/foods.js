@@ -10,7 +10,13 @@ router.get("/add", ensureAuth, (req, res) => {
 router.post("/", ensureAuth, async (req, res) => {
     try {
         req.body.user = req.user.id;
-        await Food.create(req.body);
+        await Food.create({
+            foodName: req.body.foodName,
+            foodCategory: req.body.foodCategory,
+            ingredients: req.body.ingredients,
+            image: req.body.image,
+        });
+        console.log("Food created successfully.");
         res.redirect("/dashboard");
     } catch (err) {
         console.log(err);
