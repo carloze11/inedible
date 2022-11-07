@@ -26,6 +26,8 @@ app.set("layout", "layout/layout");
 app.use(expressLayouts);
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Sessions
 app.use(
