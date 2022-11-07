@@ -41,10 +41,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Routes
 const indexRouter = require("./routes/index");
+const authRouter = require("./routes/auth");
+const foodsRouter = require("./routes/foods");
 
 app.use("/", indexRouter);
-app.use("/auth", require("./routes/auth"));
+app.use("/auth", authRouter);
+app.use("/foods", foodsRouter);
 
 app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
