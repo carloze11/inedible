@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const FoodSchema = new Schema({
     foodName: { type: String, required: true },
-    foodCategory: { type: String, enum: [Dairy, gluten, nut] },
+    foodCategory: { type: String, enum: ["dairy", "gluten", "nut"] },
     ingredients: { type: String, required: true },
     image: { type: String },
     createdAt: { type: Date, default: Date.now },
