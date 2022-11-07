@@ -20,11 +20,11 @@
                     <td><a href="/foods/<%=food._id%>">
                             <%= food.foodName %>
                         </a></td>
-                    <td>
-                        <!-- formatDate createdAt 'MMMM Do YYYY, h:mm:ss a' %> -->
-                    </td>
                     <td><span class="dash-status">
                             <%= food.foodCategory %>
+                        </span></td>
+                    <td><span class="dash-status">
+                            <%= food.ingredients.toUpperCase() %>
                         </span></td>
                     <td>
                         <a href="/foods/edit/<%= food._id %> " class="btn btn-float">
