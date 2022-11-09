@@ -49,34 +49,58 @@ router.get("/", ensureAuth, async (req, res) => {
 });
 
 router.get("/edit/:id", ensureAuth, async (req, res) => {
-    const food = await Food.findOne({ _id: req.params.id }).lean();
+    try {
+        const food = await Food.findOne({ _id: req.params.id }).lean();
 
-    if (!food) {
-        return res.render("error/404");
-    }
+        if (!food) {
+            return res.render("error/404");
+        }
 
-    if (food.user != req.user.id) {
-        res.redirect("/foods");
-    } else {
-        res.render("foods/edit", {
-            food,
-        });
+        if (food.user != req.user.id) {
+            res.redirect("/foods");
+        } else {
+            res.render("foods/edit", {
+                food,
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        res.render("/error/505");
     }
 });
 
 router.put("/:id", ensureAuth, async (req, res) => {
-    let food = await Food.findById(req.params.id).lean();
-    if (!food) {
-        return res.render("error/404");
+    try {
+        let food = await Food.findById(req.params.id).lean();
+        if (!food) {
+            return res.render("error/404");
+        }
+        if (food.user != req.user.id) {
+            res.redirect("/foods");
+        } else {
+            food = await Food.findOneAndUpdate(
+                { _id: req.params.id },
+                req.body,
+                {
+                    new: true,
+                    runValidatory: true,
+                }
+            );
+            res.redirect("/dashboard");
+        }
+    } catch (err) {
+        console.error(err);
+        res.render("/error/500");
     }
-    if (food.user != req.user.id) {
-        res.redirect("/foods");
-    } else {
-        food = await Food.findOneAndUpdate({ _id: req.params.id }, req.body, {
-            new: true,
-            runValidatory: true,
-        });
+});
+
+router.delete("/:id", ensureAuth, async (req, res) => {
+    try {
+        await Food.remove({ _id: req.params.id });
         res.redirect("/dashboard");
+    } catch (err) {
+        console.error(err);
+        res.render("/error/500");
     }
 });
 
