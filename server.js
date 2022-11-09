@@ -21,9 +21,6 @@ connectDB();
 const PORT = process.env.PORT || 5000;
 app.use(morgan("dev"));
 
-// Helper functions
-const { truncate, removeTags } = require("./helpers/helper");
-
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.set("layout", "layout/layout");
