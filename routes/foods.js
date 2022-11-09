@@ -4,6 +4,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const Food = require("../models/Food");
 const User = require("../models/User");
 
+// MOVE CBs TO A CONTROLLER FILE!!!
 router.get("/add", ensureAuth, (req, res) => {
     res.render("foods/add");
 });
@@ -33,11 +34,13 @@ router.get("/", ensureAuth, async (req, res) => {
             .populate("user")
             .sort({ foodName: "asc" })
             .lean();
-        console.log(foods);
+        const currUser = req.user;
         res.render("foods/index", {
             foods,
+            currUser: currUser,
             truncate: truncate,
             removeTags: removeTags,
+            editIcon: editIcon,
         });
     } catch (err) {
         console.log(err);
@@ -59,6 +62,18 @@ const truncate = (str, len) => {
 
 const removeTags = (input) => {
     return input.replace(/<(?:.|\n)*?>/gm, "");
+};
+
+const editIcon = (foodUser, loggedUser, foodId, floating = true) => {
+    if (foodUser._id.toString() === loggedUser._id.toString()) {
+        if (floating) {
+            return `<a href="/foods/edit/${foodId}" class="btn-floating halfway-fab green"><i class="fas fa-edit fa-small"></i></a>`;
+        } else {
+            return `<a href="/foods/edit/${storyId}"><i class="fas fa-edit"></i></a>`;
+        }
+    } else {
+        return "";
+    }
 };
 
 module.exports = router;
