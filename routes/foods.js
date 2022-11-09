@@ -64,6 +64,22 @@ router.get("/edit/:id", ensureAuth, async (req, res) => {
     }
 });
 
+router.put("/:id", ensureAuth, async (req, res) => {
+    let food = await Food.findById(req.params.id).lean();
+    if (!food) {
+        return res.render("error/404");
+    }
+    if (food.user != req.user.id) {
+        res.redirect("/foods");
+    } else {
+        food = await Food.findOneAndUpdate({ _id: req.params.id }, req.body, {
+            new: true,
+            runValidatory: true,
+        });
+        res.redirect("/dashboard");
+    }
+});
+
 // helper functions to be moved to controller along with cbs
 const truncate = (str, len) => {
     if (str.length > len && str.length > 0) {
@@ -85,7 +101,7 @@ const editIcon = (foodUser, loggedUser, foodId, floating = true) => {
         if (floating) {
             return `<a href="/foods/edit/${foodId}" class="btn-floating halfway-fab green"><i class="fas fa-edit fa-small"></i></a>`;
         } else {
-            return `<a href="/foods/edit/${storyId}"><i class="fas fa-edit"></i></a>`;
+            return `<a href="/foods/edit/${foodId}"><i class="fas fa-edit"></i></a>`;
         }
     } else {
         return "";
