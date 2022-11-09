@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col s12 m8">
+        <h3>
+            <%= food.foodName %>
+                <small>
+                    <%- editIcon(food.user, currUser, food._id, false) %>
+                </small>
+        </h3>
+        <div class="card story">
+            <div class="card-content">
+                <!-- <span class="card-title"> {{formatDate date 'MMMM Do YYYY, h:mm:ss a'}} </span> -->
+                <%= removeTags(truncate(food.ingredients, 150)) %>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <div class="card center-align">
+            <div class="card-content">
+                <span class="card-title">
+                    <%= food.user.displayName %>
+                </span>
+                <img src="<%= food.user.image %>" class="circle responsive-img img-small">
+            </div>
+            <div class="card-action">
+                <a href="/foods/<%= food.user.id %>">More From <%= food.user.displayName.split(' ')[0]  %></a>
+            </div>
+        </div>
+    </div>
+</div>
