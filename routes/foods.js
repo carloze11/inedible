@@ -48,6 +48,50 @@ router.get("/", ensureAuth, async (req, res) => {
     }
 });
 
+router.get("/:id", ensureAuth, async (req, res) => {
+    try {
+        let food = await Food.findById(req.params.id).populate("user").lean();
+
+        if (!food) {
+            return res.render("error/404");
+        }
+
+        const currUser = req.user;
+        res.render("foods/show", {
+            food,
+            currUser: currUser,
+            truncate: truncate,
+            removeTags: removeTags,
+            editIcon: editIcon,
+        });
+    } catch (err) {
+        console.error(err);
+        res.render("error/404");
+    }
+});
+
+router.get("/user/:userid", ensureAuth, async (req, res) => {
+    try {
+        const foods = await Food.find({
+            user: req.params.userid,
+            status: "public",
+        })
+            .populate("user")
+            .lean();
+        const currUser = req.user;
+        res.render("foods/index", {
+            foods,
+            currUser: currUser,
+            truncate: truncate,
+            removeTags: removeTags,
+            editIcon: editIcon,
+        });
+    } catch {
+        console.error(err);
+        res.render("/errors/500");
+    }
+});
+
 router.get("/edit/:id", ensureAuth, async (req, res) => {
     try {
         const food = await Food.findOne({ _id: req.params.id }).lean();
