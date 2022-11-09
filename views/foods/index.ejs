@@ -1,0 +1,30 @@
+<h1>Food</h1>
+<div class="row">
+    <% foods.forEach(food=> { %>
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                    <!-- todo: editicon -->
+                </div>
+                <div class="card-content center-align">
+                    <h5>
+                        <%= food.foodName %>
+                    </h5>
+                    <p>
+                        <%= food.ingredients %>
+                    </p>
+                    <br>
+                    <div class="chip">
+                        <!-- <img src="food.user.image %> " alt=""> -->
+                        <a href="/foods/user/<%=food.user%>">
+                            <%= food.displayName %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action center-align">
+                <a href="/foods/<%= food._id %> " class="btn grey">See More</a>
+            </div>
+        </div>
+        <% }) %>
+</div>
