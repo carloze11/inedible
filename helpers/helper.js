@@ -1,5 +1,5 @@
 module.exports = {
-    removeTags: function (str, len) {
+    truncate: function (str, len) {
         if (str.length > len && str.length > 0) {
             let newStr = str + " ";
             newStr = str.substr(0, len);
@@ -8,5 +8,8 @@ module.exports = {
             return newStr + "...";
         }
         return str;
+    },
+    removeTags: function (input) {
+        return input.replace(/<(?:.|\n)*?>/gm, "");
     },
 };
