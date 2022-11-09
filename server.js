@@ -41,9 +41,21 @@ app.use(
     })
 );
 
-//passport middleware
+// passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// method override
+app.use(
+    methodOverride(function (req, res) {
+        if (req.body && typeof req.body === "object" && "_method" in req.body) {
+            // look in urlencoded POST bodies and delete it
+            let method = req.body._method;
+            delete req.body._method;
+            return method;
+        }
+    })
+);
 
 //Routes
 const indexRouter = require("./routes/index");
