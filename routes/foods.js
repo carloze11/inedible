@@ -48,6 +48,22 @@ router.get("/", ensureAuth, async (req, res) => {
     }
 });
 
+router.get("/edit/:id", ensureAuth, async (req, res) => {
+    const food = await Food.findOne({ _id: req.params.id }).lean();
+
+    if (!food) {
+        return res.render("error/404");
+    }
+
+    if (food.user != req.user.id) {
+        res.redirect("/foods");
+    } else {
+        res.render("foods/edit", {
+            food,
+        });
+    }
+});
+
 // helper functions to be moved to controller along with cbs
 const truncate = (str, len) => {
     if (str.length > len && str.length > 0) {
