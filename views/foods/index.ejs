@@ -11,7 +11,7 @@
                         <%= food.foodName %>
                     </h5>
                     <p>
-                        <%= food.ingredients %>
+                        <%= removeTags(truncate(food.ingredients, 150)) %>
                     </p>
                     <br>
                     <div class="chip">
