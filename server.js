@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+// const ejsLint = require("ejs-lint");
 
 //load config
 dotenv.config({ path: "./config/config.env" });
@@ -20,12 +21,16 @@ connectDB();
 const PORT = process.env.PORT || 5000;
 app.use(morgan("dev"));
 
+// Helper functions
+const { truncate, removeTags } = require("./helpers/helper");
+
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.set("layout", "layout/layout");
 app.use(expressLayouts);
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
+//body parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
