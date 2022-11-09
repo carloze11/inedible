@@ -15,15 +15,15 @@
                     </p>
                     <br>
                     <div class="chip">
-                        <!-- <img src="food.user.image %> " alt=""> -->
-                        <a href="/foods/user/<%=food.user%>">
-                            <%= food.displayName %>
+                        <img src="<%=food.user.image %> " alt="">
+                        <a href="/foods/user/<%=food.user._id%>">
+                            <%= food.user.displayName %>
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="card-action center-align">
-                <a href="/foods/<%= food._id %> " class="btn grey">See More</a>
+                <div class="card-action center-align">
+                    <a href="/foods/<%= food._id %> " class="btn grey">See More</a>
+                </div>
             </div>
         </div>
         <% }) %>
