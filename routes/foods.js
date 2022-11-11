@@ -48,15 +48,24 @@ router.get("/", ensureAuth, async (req, res) => {
     }
 });
 
+router.get("/search", ensureAuth, async (req, res) => {
+    res.render("foods/search");
+});
+
 // Spoonacular API
-router.get("/api", ensureAuth, async (req, res) => {
+router.post("/results", ensureAuth, async (req, res) => {
     try {
-        const api_url = `https://api.spoonacular.com/food/products/search?query=yogurt&apiKey=${process.env.SPOON_API_KEY}`;
+        let productSearch = req.body.productSearch;
+        let showMore = req.body.showMore || 0;
+        console.log(`This is ${showMore}`);
+        const api_url = `https://api.spoonacular.com/food/products/search?query=${productSearch}&apiKey=${process.env.SPOON_API_KEY}`;
         const data = await fetch(api_url);
         const json = await data.json();
-        let items = json.products;
-        res.render("foods/search", {
-            items: items,
+        res.render("foods/results", {
+            productSearch: productSearch,
+            items: json.products,
+            total: json.totalProducts,
+            number: json.number + showMore,
         });
     } catch (err) {
         console.error(err);
@@ -64,7 +73,8 @@ router.get("/api", ensureAuth, async (req, res) => {
     }
 });
 
-router.get("/api/:id", ensureAuth, async (req, res) => {
+// Show specific
+router.get("/results/:id", ensureAuth, async (req, res) => {
     try {
         let itemId = req.params.id;
         const api_url = `https://api.spoonacular.com/food/products/${itemId}?apiKey=${process.env.SPOON_API_KEY}`;
