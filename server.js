@@ -10,6 +10,8 @@ const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const fetch = require("node-fetch");
+const EventEmitter = require("events");
+const myEmiiter = new EventEmitter();
 // const ejsLint = require("ejs-lint");
 
 //load config
@@ -67,7 +69,10 @@ const recipesRouter = require("./routes/recipes");
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/foods", foodsRouter);
-app.use("/recipes", recipesRouter);
+// app.use("/recipes", recipesRouter);
+
+//Event Listener
+// const showMoreItems = () => {};
 
 app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
