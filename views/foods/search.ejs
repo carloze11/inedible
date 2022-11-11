@@ -1,22 +1,8 @@
 <h1 class="center-align">Search for food using the Spoonacular API!</h1>
-
-
-
-<% items.forEach(item=> { %>
-    <div class="col s12 m4">
-        <div class="card">
-            <div class="card-content center-align">
-                <h5>
-                    <%= item.title %>
-                </h5>
-                <img src="<%= item.image %> " alt="">
-                <p>
-
-                </p>
-            </div>
-            <div class="card-action center-align">
-                <a href="/foods/api/<%= item.id %> " class="btn grey">See More</a>
-            </div>
-        </div>
+<form action="/foods/results" method="POST">
+    <div class="row">
+        <label for="productSearch">Search</label>
+        <input type="text" name="productSearch" id="productSearch">
+        <input type="submit" class="btn">
     </div>
-    <% }) %>
+</form>
