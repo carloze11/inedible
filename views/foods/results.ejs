@@ -1,0 +1,30 @@
+<form action="/foods/results" method="POST">
+    <div class="row">
+        <label for="productSearch">Search</label>
+        <input type="text" name="productSearch" id="productSearch" value="<%= productSearch %> ">
+        <input type="submit" class="btn">
+    </div>
+</form>
+
+<h5>
+    <%= total %> search results found for '<%= productSearch %>'...
+</h5>
+
+<% items.forEach(item=> { %>
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-content center-align">
+                <h5>
+                    <%= item.title %>
+                </h5>
+                <img src="<%= item.image %> " alt="">
+            </div>
+            <div class="card-action center-align">
+                <a href="/foods/results/<%= item.id %> " class="btn grey">See More</a>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+        <div class="card-action center-align">
+            <a href="/foods/results" class="btn grey" name="showMore" value="10">Show More</a>
+        </div>
