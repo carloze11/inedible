@@ -48,6 +48,40 @@ router.get("/", ensureAuth, async (req, res) => {
     }
 });
 
+// Spoonacular API
+router.get("/api", ensureAuth, async (req, res) => {
+    try {
+        const api_url = `https://api.spoonacular.com/food/products/search?query=yogurt&apiKey=${process.env.SPOON_API_KEY}`;
+        const data = await fetch(api_url);
+        const json = await data.json();
+        let items = json.products;
+        res.render("foods/search", {
+            items: items,
+        });
+    } catch (err) {
+        console.error(err);
+        res.render("/error/404");
+    }
+});
+
+router.get("/api/:id", ensureAuth, async (req, res) => {
+    try {
+        let itemId = req.params.id;
+        const api_url = `https://api.spoonacular.com/food/products/${itemId}?apiKey=${process.env.SPOON_API_KEY}`;
+        const data = await fetch(api_url);
+        const json = await data.json();
+        console.log(json);
+        res.render("foods/showapi", {
+            title: json.title,
+            ingredients: json.ingredientList,
+            image: json.image,
+        });
+    } catch (err) {
+        console.error(err);
+        res.render("error/404");
+    }
+});
+
 router.get("/:id", ensureAuth, async (req, res) => {
     try {
         let food = await Food.findById(req.params.id).populate("user").lean();
