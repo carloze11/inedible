@@ -80,8 +80,8 @@
 -   [![Npm][npm]][npm-url]
 -   [![MongoDB][mongodb.com]][mongodb-url]
 -   [![JavaScript][javascript.com]][javascript-url]
--   [HTML5][html5]
--   [CSS3][css3]
+-   [![html5]]
+-   [![css3]]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
