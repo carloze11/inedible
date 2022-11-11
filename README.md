@@ -69,7 +69,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]] <!-- (https://example.com) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -80,8 +80,8 @@
 -   [![Npm][npm]][npm-url]
 -   [![MongoDB][mongodb.com]][mongodb-url]
 -   [![JavaScript][javascript.com]][javascript-url]
--   [![HTML5][html5]]
--   [![CSS3][css3]]
+-   [HTML5][html5]
+-   [CSS3][css3]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
