@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const fetch = require("node-fetch");
 // const ejsLint = require("ejs-lint");
 
 //load config
@@ -61,10 +62,12 @@ app.use(
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const foodsRouter = require("./routes/foods");
+const recipesRouter = require("./routes/recipes");
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/foods", foodsRouter);
+app.use("/recipes", recipesRouter);
 
 app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
