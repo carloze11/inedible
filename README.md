@@ -13,15 +13,15 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![MIT License][license-shield]](./LICENSE.txt)
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/carloze11/inedible">
+  <!-- <a href="https://github.com/carloze11/inedible">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
 <h3 align="center">InEdible</h3>
 
@@ -69,7 +69,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]] <!-- (https://example.com) -->
+![Product Name Screen Shot][product-screenshot] <!-- (https://example.com) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -174,7 +174,7 @@ Project Link: [https://github.com/carloze11/inedible](https://github.com/carloze
 
 ## Acknowledgments
 
--   [The online community helping me throughout my 'self-taught' journey!]()
+-   The online community helping me throughout my 'self-taught' journey!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
