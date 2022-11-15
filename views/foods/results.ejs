@@ -7,7 +7,7 @@
 </form>
 
 <h5>
-    <%= total %> search results found for '<%= productSearch %>'...
+    '<%= total %>'' search results found for '<%= productSearch %>'...
 </h5>
 
 <% items.forEach(item=> { %>
@@ -26,5 +26,8 @@
     </div>
     <% }) %>
         <div class="card-action center-align">
-            <a href="/foods/results" class="btn grey" name="showMore" value="10">Show More</a>
+            <form action="/foods/results" method="POST">
+                <input type="text" name="productSearch" id="productSearch" value="<%= productSearch %>" hidden>
+                <button type="submit" class="btn grey" name="showMore" value="10">Show More</button>
+            </form>
         </div>
