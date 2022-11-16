@@ -1,0 +1,33 @@
+<form action="/products/results" method="POST">
+    <div class="row">
+        <label for="productSearch">Search</label>
+        <input type="text" name="productSearch" id="productSearch" value="<%= productSearch %> ">
+        <input type="submit" class="btn">
+    </div>
+</form>
+
+<h5>
+    '<%= total %>'' search results found for '<%= productSearch %>'...
+</h5>
+
+<% products.forEach(product=> { %>
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-content center-align">
+                <h5>
+                    <%= product.title %>
+                </h5>
+                <img src="<%= product.image %> " alt="">
+            </div>
+            <div class="card-action center-align">
+                <a href="/products/results/<%= product.id %> " class="btn grey">See More</a>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+        <div class="card-action center-align">
+            <form action="/products/results" method="POST">
+                <input type="text" name="productSearch" id="productSearch" value="<%= productSearch %>" hidden>
+                <button type="submit" class="btn grey" name="showMore" value="10">Show More</button>
+            </form>
+        </div>
