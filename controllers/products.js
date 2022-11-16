@@ -6,7 +6,10 @@ exports.getSearch = async (req, res) => {
 // Show search results from Spoonacular API
 exports.postResults = async (req, res) => {
     try {
-        let productSearch = req.body.productSearch;
+        if (!req.body.productSearch) {
+            res.render("products/search");
+        }
+        let productSearch = req.body.productSearch.trim();
         const api_url = `https://api.spoonacular.com/food/products/search?query=${productSearch}&number=100&apiKey=${process.env.SPOON_API_KEY}`;
         const data = await fetch(api_url);
         const json = await data.json();
