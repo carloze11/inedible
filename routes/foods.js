@@ -48,48 +48,6 @@ router.get("/", ensureAuth, async (req, res) => {
     }
 });
 
-router.get("/search", ensureAuth, async (req, res) => {
-    res.render("foods/search");
-});
-
-// Spoonacular API
-router.post("/results", ensureAuth, async (req, res) => {
-    try {
-        let productSearch = req.body.productSearch;
-        const api_url = `https://api.spoonacular.com/food/products/search?query=${productSearch}&number=100&apiKey=${process.env.SPOON_API_KEY}`;
-        const data = await fetch(api_url);
-        const json = await data.json();
-        res.render("foods/results", {
-            productSearch: productSearch,
-            items: json.products,
-            total: json.totalProducts,
-            number: json.number,
-        });
-    } catch (err) {
-        console.error(err);
-        res.render("/error/404");
-    }
-});
-
-// Show specific
-router.get("/results/:id", ensureAuth, async (req, res) => {
-    try {
-        let itemId = req.params.id;
-        const api_url = `https://api.spoonacular.com/food/products/${itemId}?apiKey=${process.env.SPOON_API_KEY}`;
-        const data = await fetch(api_url);
-        const json = await data.json();
-        console.log(json);
-        res.render("foods/showapi", {
-            title: json.title,
-            ingredients: json.ingredientList,
-            image: json.image,
-        });
-    } catch (err) {
-        console.error(err);
-        res.render("error/404");
-    }
-});
-
 router.get("/:id", ensureAuth, async (req, res) => {
     try {
         let food = await Food.findById(req.params.id).populate("user").lean();
