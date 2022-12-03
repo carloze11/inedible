@@ -24,10 +24,14 @@ connectDB();
 const PORT = process.env.PORT || 5000;
 app.use(morgan("dev"));
 
-app.set("view engine", "ejs");
+// Switching from ejs to jsx
+app.set("view engine", "jsx");
+// This tells express how to handle jsx :o
+app.engine("jsx", require("express-react-views").createEngine());
+
 app.set("views", __dirname + "/views");
-app.set("layout", "layout/layout");
-app.use(expressLayouts);
+// app.set("layout", "layout/layout");
+// app.use(expressLayouts);
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
 //body parsing

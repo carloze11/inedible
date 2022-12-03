@@ -20,3 +20,18 @@ p {
 .img-small {
     width: 180px;
 }
+
+.results-container {
+    display: grid;
+    grid: auto-flow / repeat(4, 1fr);
+    gap: 20px;
+}
+
+div.col.s12.m4 {
+    display: grid;
+    align-self: stretch;
+}
+
+div.card {
+    align-self: stretch;
+}
