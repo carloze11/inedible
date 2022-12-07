@@ -167,9 +167,9 @@ const removeTags = (input) => {
 const editIcon = (foodUser, loggedUser, foodId, floating = true) => {
     if (foodUser._id.toString() === loggedUser._id.toString()) {
         if (floating) {
-            return `<a href="/foods/edit/${foodId}" class="btn-floating halfway-fab green"><i class="fas fa-edit fa-small"></i></a>`;
+            return "<a href={`/foods/edit/${foodId}`} class='btn-floating halfway-fab green'><i class='fas fa-edit fa-small'></i></a>";
         } else {
-            return `<a href="/foods/edit/${foodId}"><i class="fas fa-edit"></i></a>`;
+            return "<a href={`/foods/edit/${foodId}`}><i class='fas fa-edit'></i></a>";
         }
     } else {
         return "";

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import AddBtn from "./AddBtn";
-import "materialize-css";
+// import "materialize-css";
 
 export default function Main(props) {
     return (
