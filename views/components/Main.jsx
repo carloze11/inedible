@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import AddBtn from "./AddBtn";
+import "materialize-css";
 
 export default function Main(props) {
     return (
@@ -40,10 +41,11 @@ export default function Main(props) {
                         referrerPolicy="no-referrer"
                     ></script>
                     <script>
-                        M.Sidenav.init(document.querySelector('.sidenav'))
+                        M.Sidenav.init(document.querySelector(".sidenav"))
                     </script>
                     <script>
-                        M.FormSelect.init(document.querySelector('#foodCategory'))
+                        M.FormSelect.init(
+                        document.querySelector("#foodCategory") )
                     </script>
 
                     {/* <script>CKEDITOR.replace('ingredients', {plugins: 'wysiwygarea, toolbar, basicstyles, link'})</script> */}

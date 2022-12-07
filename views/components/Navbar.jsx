@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+// import M from "materialize-css";
 
 export default function Navbar() {
+    // Trying to make sidenav from Materialize work with React
+
+    // useEffect(() => {
+    //     let sideNav = document.querySelector("#slide-out");
+    //     M.Sidenav.init(sideNav, {});
+    // }, []);
+
     return (
         <nav className="grey darken-3">
             <div className="nav-wrapper container">
@@ -9,12 +17,12 @@ export default function Navbar() {
                 </a>
                 <a
                     href="#"
-                    data-target="mobile-demo"
+                    data-target="slide-out"
                     className="sidenav-trigger show-on-large"
                 >
                     <i className="fas fa-bars"></i>
                 </a>
-                <ul className="sidenav" id="mobile-demo">
+                <ul className="sidenav" id="slide-out">
                     <li>
                         <a href="/dashboard">Dashboard</a>
                     </li>
