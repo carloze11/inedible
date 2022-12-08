@@ -3,11 +3,11 @@ import Main from "../components/Main";
 
 export default function Edit({ food }) {
     return (
-        <>
+        <Main>
             <h3>Edit Food</h3>
             <div className="row">
                 <form
-                    action={`/foods/${food._id}>`}
+                    action={`/foods/${food._id}`}
                     method="POST"
                     className="col s12"
                 >
@@ -18,7 +18,7 @@ export default function Edit({ food }) {
                                 type="text"
                                 id="name"
                                 name="foodName"
-                                value={food.foodName}
+                                defaultValue={food.foodName}
                             />
                             <label htmlFor="foodName">Name</label>
                         </div>
@@ -29,7 +29,7 @@ export default function Edit({ food }) {
                             <select
                                 id="foodCategory"
                                 name="foodCategory"
-                                value={food.foodCategory}
+                                defaultValue={food.foodCategory}
                             >
                                 <option value="Dairy">Dairy</option>
                                 <option value="Gluten">Gluten</option>
@@ -46,9 +46,8 @@ export default function Edit({ food }) {
                                 id="ingredients"
                                 className="materialize-textarea"
                                 name="ingredients"
-                            >
-                                {food.ingredients}
-                            </textarea>
+                                defaultValue={food.ingredients}
+                            ></textarea>
                         </div>
                     </div>
 
@@ -66,6 +65,6 @@ export default function Edit({ food }) {
                     </div>
                 </form>
             </div>
-        </>
+        </Main>
     );
 }

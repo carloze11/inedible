@@ -22,7 +22,7 @@ export default function Dashboard(props) {
                     <tbody>
                         {props.foods.map((food) => {
                             return (
-                                <tr>
+                                <tr key={food._id}>
                                     <td>
                                         <a href={`/foods/${food._id}`}>
                                             {food.foodName}
