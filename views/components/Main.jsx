@@ -3,6 +3,8 @@ import Navbar from "./Navbar";
 import AddBtn from "./AddBtn";
 // import "materialize-css";
 
+// Need to get materialize to initialize sidebar and food category!!!
+
 export default function Main(props) {
     return (
         <>
