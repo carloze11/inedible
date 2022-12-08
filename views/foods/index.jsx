@@ -14,11 +14,18 @@ export default function Index({
             <div className="row">
                 {foods.map((food) => {
                     return (
-                        <div className="col s12 m4">
+                        <div key={food._id} className="col s12 m4">
                             <div className="card">
-                                <div className="card-image">
-                                    {editIcon(food.user, currUser, food._id)}
-                                </div>
+                                <div
+                                    className="card-image"
+                                    dangerouslySetInnerHTML={{
+                                        __html: editIcon(
+                                            food.user,
+                                            currUser,
+                                            food._id
+                                        ),
+                                    }}
+                                ></div>
                                 <div className="card-content center-align">
                                     <h5>{food.foodName}</h5>
                                     <p>
