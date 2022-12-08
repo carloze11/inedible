@@ -1,4 +1,4 @@
-import React from "react";
+import Main from "../components/Main";
 
 export default function Error404() {
     return (
