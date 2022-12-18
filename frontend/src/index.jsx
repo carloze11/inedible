@@ -7,20 +7,32 @@ import Root from "./routes/Root";
 import ErrorPage from "./routes/Error";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
+import Index from "./routes/Index";
+import Dashboard from "./routes/Dashboard";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
         errorElement: <ErrorPage />,
-    },
-    {
-        path: "/login",
-        element: <Login />,
-    },
-    {
-        path: "/signup",
-        element: <Signup />,
+        children: [
+            {
+                index: true,
+                element: <Index />,
+            },
+            {
+                path: "/login",
+                element: <Login />,
+            },
+            {
+                path: "/signup",
+                element: <Signup />,
+            },
+            {
+                path: "/dashboard",
+                element: <Dashboard />,
+            },
+        ],
     },
 ]);
 

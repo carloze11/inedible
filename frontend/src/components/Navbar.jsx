@@ -1,28 +1,26 @@
 import React, { useEffect } from "react";
-// import M from "materialize-css";
+import { Link } from "react-router-dom";
+import M from "materialize-css";
 
 export default function Navbar() {
-    // Trying to make sidenav from Materialize work with React
-
-    // useEffect(() => {
-    //     let sideNav = document.querySelector("#slide-out");
-    //     M.Sidenav.init(sideNav, {});
-    // }, []);
+    useEffect(() => {
+        M.Sidenav.init(document.querySelectorAll(".sidenav"));
+    }, []);
 
     return (
         <nav className="grey darken-3">
             <div className="nav-wrapper container">
-                <a href="/dashboard" className="brand-logo center">
+                <Link to="/dashboard" className="brand-logo center">
                     <i className="fa-solid fa-skull-crossbones"></i>InEdible
-                </a>
+                </Link>
                 <a
                     href="#"
-                    data-target="slide-out"
+                    data-target="mobile-demo"
                     className="sidenav-trigger show-on-large"
                 >
                     <i className="fas fa-bars"></i>
                 </a>
-                <ul className="sidenav" id="slide-out">
+                <ul className="sidenav" id="mobile-demo">
                     <li>
                         <a href="/dashboard">Dashboard</a>
                     </li>
