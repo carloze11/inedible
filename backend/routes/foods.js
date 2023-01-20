@@ -3,6 +3,7 @@ const router = express.Router();
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const Food = require("../models/Food");
 const User = require("../models/User");
+const foodsController = require("../controllers/foodsController");
 
 // MOVE CBs TO A CONTROLLER FILE!!!
 router.get("/add", ensureAuth, (req, res) => {
@@ -28,125 +29,22 @@ router.post("/", ensureAuth, async (req, res) => {
 });
 
 // Show food by everyone
-router.get("/", ensureAuth, async (req, res) => {
-    try {
-        const foods = await Food.find()
-            .populate("user")
-            .sort({ foodName: "asc" })
-            .lean();
-        const currUser = req.user;
-        res.render("foods/index", {
-            foods,
-            currUser: currUser,
-            truncate: truncate,
-            removeTags: removeTags,
-            editIcon: editIcon,
-        });
-    } catch (err) {
-        console.log(err);
-        res.render("error/500");
-    }
-});
+router.get("/", ensureAuth, foodsController.getAllFood);
 
-router.get("/:id", ensureAuth, async (req, res) => {
-    try {
-        let food = await Food.findById(req.params.id).populate("user").lean();
+// Get single food item
+router.get("/:id", ensureAuth, foodsController.getFoodItem);
 
-        if (!food) {
-            return res.render("error/404");
-        }
+// Get single user's food
+router.get("/user/:userid", ensureAuth, foodsController.getUserFood);
 
-        const currUser = req.user;
-        res.render("foods/show", {
-            food,
-            currUser: currUser,
-            truncate: truncate,
-            removeTags: removeTags,
-            editIcon: editIcon,
-        });
-    } catch (err) {
-        console.error(err);
-        res.render("error/404");
-    }
-});
+// Get user food item to edit
+router.get("/edit/:id", ensureAuth, foodsController.getEditFood);
 
-router.get("/user/:userid", ensureAuth, async (req, res) => {
-    try {
-        const foods = await Food.find({
-            user: req.params.userid,
-            status: "public",
-        })
-            .populate("user")
-            .lean();
-        const currUser = req.user;
-        res.render("foods/index", {
-            foods,
-            currUser: currUser,
-            truncate: truncate,
-            removeTags: removeTags,
-            editIcon: editIcon,
-        });
-    } catch {
-        console.error(err);
-        res.render("/errors/500");
-    }
-});
+// Edit user food item
+router.put("/:id", ensureAuth, foodsController.editFood);
 
-router.get("/edit/:id", ensureAuth, async (req, res) => {
-    try {
-        const food = await Food.findOne({ _id: req.params.id }).lean();
-
-        if (!food) {
-            return res.render("error/404");
-        }
-
-        if (food.user != req.user.id) {
-            res.redirect("/foods");
-        } else {
-            res.render("foods/edit", {
-                food,
-            });
-        }
-    } catch (err) {
-        console.error(err);
-        res.render("/error/505");
-    }
-});
-
-router.put("/:id", ensureAuth, async (req, res) => {
-    try {
-        let food = await Food.findById(req.params.id).lean();
-        if (!food) {
-            return res.render("error/404");
-        }
-        if (food.user != req.user.id) {
-            res.redirect("/foods");
-        } else {
-            food = await Food.findOneAndUpdate(
-                { _id: req.params.id },
-                req.body,
-                {
-                    new: true,
-                    runValidatory: true,
-                }
-            );
-            res.redirect("/dashboard");
-        }
-    } catch (err) {
-        console.error(err);
-        res.render("/error/500");
-    }
-});
-
-router.delete("/:id", ensureAuth, async (req, res) => {
-    try {
-        await Food.remove({ _id: req.params.id });
-        res.redirect("/dashboard");
-    } catch (err) {
-        console.error(err);
-        res.render("/error/500");
-    }
-});
+// Delete user food item
+router.delete("/:id", ensureAuth, foodsController.eleteFood);
 
 // helper functions to be moved to controller along with cbs
 const truncate = (str, len) => {
