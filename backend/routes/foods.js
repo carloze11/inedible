@@ -46,32 +46,4 @@ router.put("/:id", ensureAuth, foodsController.editFood);
 // Delete user food item
 router.delete("/:id", ensureAuth, foodsController.eleteFood);
 
-// helper functions to be moved to controller along with cbs
-const truncate = (str, len) => {
-    if (str.length > len && str.length > 0) {
-        let newStr = str + " ";
-        newStr = str.substr(0, len);
-        newStr = str.substr(0, newStr.lastIndexOf(" "));
-        newStr = newStr.length > 0 ? newStr : str.substr(0, len);
-        return newStr + "...";
-    }
-    return str;
-};
-
-const removeTags = (input) => {
-    return input.replace(/<(?:.|\n)*?>/gm, "");
-};
-
-const editIcon = (foodUser, loggedUser, foodId, floating = true) => {
-    if (foodUser._id.toString() === loggedUser._id.toString()) {
-        if (floating) {
-            return "<a href={`/foods/edit/${foodId}`} class='btn-floating halfway-fab green'><i class='fas fa-edit fa-small'></i></a>";
-        } else {
-            return "<a href={`/foods/edit/${foodId}`}><i class='fas fa-edit'></i></a>";
-        }
-    } else {
-        return "";
-    }
-};
-
 module.exports = router;
