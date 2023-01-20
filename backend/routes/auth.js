@@ -10,7 +10,10 @@ router.get(
     "/google/callback",
     passport.authenticate("google", { failureRedirect: "/" }),
     (req, res) => {
-        res.redirect("/dashboard");
+        res.setHeader("Content-Type", "application/json");
+        res.send(
+            JSON.stringify({ success: true, message: "Logged in successfully" })
+        );
     }
 );
 

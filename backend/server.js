@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const connectDB = require("./config/database");
@@ -23,6 +24,9 @@ require("./config/passport")(passport);
 connectDB();
 const PORT = process.env.PORT || 5000;
 app.use(morgan("dev"));
+
+// Enable CORS
+app.use(cors());
 
 // Switching from ejs to jsx
 app.set("view engine", "jsx");
@@ -79,6 +83,10 @@ app.use("/products", productsRouter);
 
 //Event Listener
 // const showMoreItems = () => {};
+
+app.get("/message", (req, res) => {
+    res.json({ message: "Hello from server!" });
+});
 
 app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
