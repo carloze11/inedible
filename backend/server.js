@@ -26,7 +26,13 @@ const PORT = process.env.PORT || 5000;
 app.use(morgan("dev"));
 
 // Enable CORS
-app.use(cors());
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+        methods: "GET, PUT, POST, DELETE",
+        credentials: true,
+    })
+);
 
 // Switching from ejs to jsx
 app.set("view engine", "jsx");
@@ -38,6 +44,7 @@ app.set("views", __dirname + "/views");
 // app.use(expressLayouts);
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
+
 //body parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -80,9 +87,6 @@ app.use("/auth", authRouter);
 app.use("/foods", foodsRouter);
 app.use("/products", productsRouter);
 // app.use("/recipes", recipesRouter);
-
-//Event Listener
-// const showMoreItems = () => {};
 
 app.get("/message", (req, res) => {
     res.json({ message: "Hello from server!" });

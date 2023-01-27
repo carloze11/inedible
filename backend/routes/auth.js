@@ -5,6 +5,7 @@ const homePageController = require("../controllers/homePage");
 const authController = require("../controllers/auth");
 
 router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+
 //google auth callback
 router.get(
     "/google/callback",
