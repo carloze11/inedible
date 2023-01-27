@@ -1,7 +1,7 @@
 export default function Home() {
-    const google = () => {
-        window.open("http://localhost:3000/auth/google", "_self");
-    };
+    // const google = () => {
+    //     window.open("http://localhost:3000/auth/google", "_self");
+    // };
 
     return (
         <div className="container login-container">
@@ -23,7 +23,7 @@ export default function Home() {
                         <a
                             href="/auth/google"
                             className="btn red darken-1"
-                            onClick={google}
+                            // onClick={google}
                         >
                             <i className="fab fa-google left"></i> Log In With
                             Google
