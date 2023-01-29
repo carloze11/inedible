@@ -1,9 +1,6 @@
-import React from "react";
-import Main from "../components/Main";
-
 export default function Results({ productSearch, products, total, number }) {
     return (
-        <Main>
+        <div>
             <form action="/products/results" method="POST">
                 <div className="row">
                     <label htmlFor="productSearch">Search</label>
@@ -63,6 +60,6 @@ export default function Results({ productSearch, products, total, number }) {
                     </button>
                 </form>
             </div>
-        </Main>
+        </div>
     );
 }

@@ -1,9 +1,6 @@
-import React from "react";
-import Main from "../components/Main";
-
 export default function ShowProduct({ title, image, description }) {
     return (
-        <Main>
+        <div>
             <div className="row">
                 <div className="col s12 m8">
                     <h3>{title}</h3>
@@ -18,6 +15,6 @@ export default function ShowProduct({ title, image, description }) {
                     </div>
                 </div>
             </div>
-        </Main>
+        </div>
     );
 }

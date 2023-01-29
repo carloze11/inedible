@@ -1,6 +1,6 @@
 export default function Search() {
     return (
-        <Main>
+        <div>
             <h1 className="center-align">
                 Search for food using the Spoonacular API!
             </h1>
@@ -16,6 +16,6 @@ export default function Search() {
                     <input type="submit" className="btn" />
                 </div>
             </form>
-        </Main>
+        </div>
     );
 }

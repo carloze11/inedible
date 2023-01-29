@@ -1,10 +1,6 @@
-import React from "react";
-import Main from "./components/Main";
-import Navbar from "./components/Navbar";
-
 export default function Dashboard(props) {
     return (
-        <Main>
+        <div>
             <h6>Dashboard</h6>
             <h3> Welcome {props.name}! </h3>
             <p>Added Food List</p>
@@ -72,6 +68,6 @@ export default function Dashboard(props) {
             ) : (
                 <p>You got no food!</p>
             )}
-        </Main>
+        </div>
     );
 }

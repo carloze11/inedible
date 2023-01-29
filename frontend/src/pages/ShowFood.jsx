@@ -1,6 +1,3 @@
-import React from "react";
-import Main from "../components/Main";
-
 export default function Show({
     food,
     currUser,
@@ -9,7 +6,7 @@ export default function Show({
     editIcon,
 }) {
     return (
-        <Main>
+        <div>
             <div className="row">
                 <div className="col s12 m8">
                     <h3>
@@ -51,6 +48,6 @@ export default function Show({
                     </div>
                 </div>
             </div>
-        </Main>
+        </div>
     );
 }

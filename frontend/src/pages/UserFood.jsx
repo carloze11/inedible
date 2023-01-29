@@ -1,6 +1,3 @@
-import React from "react";
-import Main from "../components/Main";
-
 export default function Index({
     foods,
     currUser,
@@ -9,7 +6,7 @@ export default function Index({
     truncate,
 }) {
     return (
-        <Main>
+        <div>
             <h1>Food</h1>
             <div className="row">
                 {foods.map((food) => {
@@ -56,6 +53,6 @@ export default function Index({
                     );
                 })}
             </div>
-        </Main>
+        </div>
     );
 }
