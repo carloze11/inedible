@@ -13,10 +13,10 @@ require("dotenv").config();
 const PORT = process.env.PORT;
 const DB = process.env.MONGO_URI;
 
-//passport config
-// require("./config/passport")(passport);
-
 // MIDDLEWARE
+//passport config
+require("./middleware/passport")(passport);
+
 // Log HTTP requests and errors
 app.use(morgan("dev"));
 
