@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
 const morgan = require("morgan");
-const connectDB = require("./config/database");
 const app = express();
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
@@ -10,14 +8,16 @@ const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
-//load config
-dotenv.config({ path: "./config/config.env" });
+// environment variables
+require("dotenv").config();
+const PORT = process.env.PORT;
+const DB = process.env.MONGO_URI;
 
 //passport config
-require("./config/passport")(passport);
+// require("./config/passport")(passport);
 
-connectDB();
-const PORT = process.env.PORT || 5000;
+// MIDDLEWARE
+// Log HTTP requests and errors
 app.use(morgan("dev"));
 
 // Enable CORS
@@ -63,22 +63,33 @@ app.use(
 );
 
 //Routes
-const indexRouter = require("./routes/index");
-const authRouter = require("./routes/auth");
-const foodsRouter = require("./routes/foods");
-const productsRouter = require("./routes/products");
-const recipesRouter = require("./routes/recipes");
+// const indexRouter = require("./routes/index");
+// const authRouter = require("./routes/auth");
+// const foodsRouter = require("./routes/foods");
+// const productsRouter = require("./routes/products");
+// const recipesRouter = require("./routes/recipes");
 
-app.use("/", indexRouter);
-app.use("/auth", authRouter);
-app.use("/foods", foodsRouter);
-app.use("/products", productsRouter);
+// app.use("/", indexRouter);
+// app.use("/auth", authRouter);
+// app.use("/foods", foodsRouter);
+// app.use("/products", productsRouter);
 // app.use("/recipes", recipesRouter);
 
-app.get("/message", (req, res) => {
-    res.json({ message: "Hello from server!" });
+app.use("/", (req, res) => {
+    res.json("Hello Cold, Dark World!");
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running at port ${PORT}`);
-});
+// connect to db
+mongoose
+    .set("strictQuery", false)
+    .connect(DB)
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(
+                `Server is listening on port ${PORT} and connected to the database.`
+            );
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
