@@ -4,16 +4,11 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const connectDB = require("./config/database");
 const app = express();
-const expressLayouts = require("express-layouts");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const fetch = require("node-fetch");
-const EventEmitter = require("events");
-const myEmiiter = new EventEmitter();
-// const ejsLint = require("ejs-lint");
 
 //load config
 dotenv.config({ path: "./config/config.env" });
@@ -34,14 +29,6 @@ app.use(
     })
 );
 
-// Switching from ejs to jsx
-app.set("view engine", "jsx");
-// This tells express how to handle jsx :o
-app.engine("jsx", require("express-react-views").createEngine());
-
-app.set("views", __dirname + "/views");
-// app.set("layout", "layout/layout");
-// app.use(expressLayouts);
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
 
