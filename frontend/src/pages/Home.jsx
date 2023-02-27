@@ -1,6 +1,9 @@
 export default function Home() {
-    const google = () => {
-        window.open("http://localhost:3000/auth/google", "_self");
+    const googleAuth = () => {
+        window.open(
+            `${process.env.REACT_APP_API_URL}/auth/google/allback`,
+            "_self"
+        );
     };
 
     return (
