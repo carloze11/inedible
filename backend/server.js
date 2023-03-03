@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const keys = require("./config/keys");
 
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -14,8 +15,8 @@ const findOrCreate = require("mongoose-findorcreate");
 
 // environment variables
 require("dotenv").config();
-const PORT = process.env.PORT;
-const DB = process.env.MONGO_URI;
+const PORT = keys.PORT;
+const DB = keys.MONGO_URI;
 
 // MIDDLEWARE
 //passport config
@@ -24,15 +25,6 @@ require("./middleware/passport")(passport);
 // Log HTTP requests and errors
 app.use(morgan("dev"));
 
-// Enable CORS
-app.use(
-    cors({
-        origin: "http://localhost:3000",
-        methods: "GET, PUT, POST, DELETE",
-        credentials: true,
-    })
-);
-
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
 
@@ -40,31 +32,31 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Sessions
-// app.use(
-//     session({
-//         secret: "keyboard cat",
-//         resave: false,
-//         saveUninitialized: true,
-//         store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-//     })
-// );
+//Sessions;
+app.use(
+    session({
+        secret: "keyboard cat",
+        resave: false,
+        saveUninitialized: true,
+        store: MongoStore.create({ mongoUrl: keys.MONGO_URI }),
+    })
+);
 
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-// method override
-app.use(
-    methodOverride(function (req, res) {
-        if (req.body && typeof req.body === "object" && "_method" in req.body) {
-            // look in urlencoded POST bodies and delete it
-            let method = req.body._method;
-            delete req.body._method;
-            return method;
-        }
-    })
-);
+// // method override
+// app.use(
+//     methodOverride(function (req, res) {
+//         if (req.body && typeof req.body === "object" && "_method" in req.body) {
+//             // look in urlencoded POST bodies and delete it
+//             let method = req.body._method;
+//             delete req.body._method;
+//             return method;
+//         }
+//     })
+// );
 
 //Routes
 // const indexRouter = require("./routes/index");
@@ -80,18 +72,8 @@ const authRouter = require("./routes/auth");
 // app.use("/recipes", recipesRouter);
 
 app.use("/", (req, res) => {
-    res.json("Hello Cold, Dark World!");
+    res.send({ hi: "Hello Cold, Dark World!" });
 });
-
-app.use(
-    session({
-        secret: "Our little secret.",
-        resave: false,
-        saveUninitialized: false,
-    })
-);
-app.use(passport.initialize());
-app.use(passport.session());
 
 // connect to db
 mongoose
