@@ -6,28 +6,42 @@ const authController = require("../controllers/auth");
 
 router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
-//google auth callback
+// // Successful Login
+// router.get("/login/successful", (req, res) => {
+//     if (req.user) {
+//         res.status(200).json({
+//             error: false,
+//             message: "Successful",
+//             user: req.user,
+//         });
+//     } else {
+//         res.status(403).json({ error: true, message: "Not authorized." });
+//     }
+// });
+
+// // Failed login
+// router.get("/login/failed", (req, res) => {
+//     res.status(401).json({
+//         error: true,
+//         message: "Login failed.",
+//     });
+// });
+
+// google auth callback
 router.get(
     "/google/callback",
-    passport.authenticate("google", { failureRedirect: "/" }),
+    passport.authenticate("google", {
+        failureRedirect: "http://localhost:3000",
+    }),
     (req, res) => {
-        res.setHeader("Content-Type", "application/json");
-        res.send(
-            JSON.stringify({ success: true, message: "Logged in successfully" })
-        );
+        // Successful authentication, redirect secrets.
+        res.redirect("http://localhost:3000/");
     }
 );
 
 // Logout user
-router.get("/logout", (req, res) => {
-    req.logout(() => {
-        res.redirect("/login");
-    });
+app.get("/logout", function (req, res) {
+    res.redirect("http://localhost:3000/");
 });
-
-// router.post("/login", authController.postLogin);
-// router.get("/logout", authController.getLogout);
-// router.get("/signup", authController.getSignup);
-// router.post("/signup", authController.postSignup);
 
 module.exports = router;

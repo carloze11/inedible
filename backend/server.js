@@ -8,6 +8,10 @@ const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
+const passportLocalMongoose = require("passport-local-mongoose");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const findOrCreate = require("mongoose-findorcreate");
+
 // environment variables
 require("dotenv").config();
 const PORT = process.env.PORT;
@@ -37,14 +41,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Sessions
-app.use(
-    session({
-        secret: "keyboard cat",
-        resave: false,
-        saveUninitialized: true,
-        store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-    })
-);
+// app.use(
+//     session({
+//         secret: "keyboard cat",
+//         resave: false,
+//         saveUninitialized: true,
+//         store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+//     })
+// );
 
 // passport middleware
 app.use(passport.initialize());
@@ -64,7 +68,7 @@ app.use(
 
 //Routes
 // const indexRouter = require("./routes/index");
-// const authRouter = require("./routes/auth");
+const authRouter = require("./routes/auth");
 // const foodsRouter = require("./routes/foods");
 // const productsRouter = require("./routes/products");
 // const recipesRouter = require("./routes/recipes");
@@ -78,6 +82,16 @@ app.use(
 app.use("/", (req, res) => {
     res.json("Hello Cold, Dark World!");
 });
+
+app.use(
+    session({
+        secret: "Our little secret.",
+        resave: false,
+        saveUninitialized: false,
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // connect to db
 mongoose
