@@ -5,6 +5,7 @@ module.exports = function (app) {
         ["/api/*", "/auth/google"],
         createProxyMiddleware({
             target: "http://localhost:4000",
+            changeOrigin: true,
         })
     );
 };

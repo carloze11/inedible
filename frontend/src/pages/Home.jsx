@@ -1,11 +1,4 @@
 export default function Home() {
-    const googleAuth = () => {
-        window.open(
-            `${process.env.REACT_APP_API_URL}/auth/google/allback`,
-            "_self"
-        );
-    };
-
     return (
         <div className="container login-container">
             <div className="card">
@@ -23,11 +16,7 @@ export default function Home() {
                     </div>
                     <div className="divider"></div>
                     <div className="section">
-                        <a
-                            href="/auth/google"
-                            className="btn red darken-1"
-                            onClick={google}
-                        >
+                        <a href="/auth/google" className="btn red darken-1">
                             <i className="fab fa-google left"></i> Log In With
                             Google
                         </a>

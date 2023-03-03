@@ -60,10 +60,12 @@ const authRouter = require("./routes/auth");
 // const recipesRouter = require("./routes/recipes");
 
 // app.use("/", indexRouter);
-// app.use("/auth", authRouter);
+
 // app.use("/foods", foodsRouter);
 // app.use("/products", productsRouter);
 // app.use("/recipes", recipesRouter);
+
+app.use("/auth", authRouter);
 
 app.use("/", (req, res) => {
     res.send({ hi: "Hello Cold, Dark World!" });
