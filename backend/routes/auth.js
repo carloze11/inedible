@@ -31,17 +31,24 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 router.get(
     "/google/callback",
     passport.authenticate("google", {
-        failureRedirect: "http://localhost:3000",
+        failureRedirect: "/",
     }),
     (req, res) => {
         // Successful authentication, redirect secrets.
-        res.redirect("http://localhost:3000/");
+        res.redirect("/dashboard");
     }
 );
 
 // Logout user
-router.get("/logout", function (req, res) {
-    res.redirect("http://localhost:3000/");
+router.post("/logout", function (req, res, next) {
+    req.logout(function (err) {
+        if (err) {
+            console.log(err);
+            return next(err);
+        }
+        res.redirect("/dashboard");
+    });
+    console.log("logged out");
 });
 
 module.exports = router;

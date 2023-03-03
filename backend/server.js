@@ -67,9 +67,9 @@ const authRouter = require("./routes/auth");
 
 app.use("/auth", authRouter);
 
-app.use("/", (req, res) => {
-    res.send({ hi: "Hello Cold, Dark World!" });
-});
+// app.use("/", (req, res) => {
+//     res.send({ hi: "Hello Cold, Dark World!" });
+// });
 
 // connect to db
 mongoose
