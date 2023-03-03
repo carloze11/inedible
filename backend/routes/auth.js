@@ -40,7 +40,7 @@ router.get(
 );
 
 // Logout user
-app.get("/logout", function (req, res) {
+router.get("/logout", function (req, res) {
     res.redirect("http://localhost:3000/");
 });
 

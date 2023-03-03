@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const morgan = require("morgan");
 const app = express();
 const methodOverride = require("method-override");
@@ -8,10 +7,6 @@ const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const keys = require("./config/keys");
-
-const passportLocalMongoose = require("passport-local-mongoose");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const findOrCreate = require("mongoose-findorcreate");
 
 // environment variables
 const PORT = process.env.PORT || 4000;
