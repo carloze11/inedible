@@ -14,9 +14,8 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 
 // environment variables
-require("dotenv").config();
-const PORT = keys.PORT;
-const DB = keys.MONGO_URI;
+const PORT = process.env.PORT || 4000;
+const DB = keys.mongoURI;
 
 // MIDDLEWARE
 //passport config
@@ -38,7 +37,7 @@ app.use(
         secret: "keyboard cat",
         resave: false,
         saveUninitialized: true,
-        store: MongoStore.create({ mongoUrl: keys.MONGO_URI }),
+        store: MongoStore.create({ mongoUrl: DB }),
     })
 );
 
