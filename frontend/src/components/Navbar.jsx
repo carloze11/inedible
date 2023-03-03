@@ -1,18 +1,25 @@
+import M from "materialize-css";
+import { useEffect } from "react";
+
 export default function Navbar() {
+    useEffect(() => {
+        M.AutoInit();
+    }, []);
+
     return (
-        <nav class="grey darken-3">
-            <div class="nav-wrapper container">
-                <a href="#!" class="brand-logo center">
-                    <i class="fa-solid fa-skull-crossbones"></i>InEdible
+        <nav className="grey darken-3">
+            <div className="nav-wrapper container">
+                <a href="#!" className="brand-logo center">
+                    <i className="fa-solid fa-skull-crossbones"></i>InEdible
                 </a>
                 <a
                     href="#"
                     data-target="mobile-demo"
-                    class="sidenav-trigger show-on-large"
+                    className="sidenav-trigger show-on-large"
                 >
-                    <i class="fas fa-bars"></i>
+                    <i className="fas fa-bars"></i>
                 </a>
-                <ul class="sidenav" id="mobile-demo">
+                <ul id="mobile-demo" className="sidenav">
                     <li>
                         <a href="/dashboard">Dashboard</a>
                     </li>
