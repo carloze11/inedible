@@ -46,7 +46,7 @@ router.post("/logout", function (req, res, next) {
             console.log(err);
             return next(err);
         }
-        res.redirect("/dashboard");
+        res.redirect("/");
     });
     console.log("logged out");
 });
