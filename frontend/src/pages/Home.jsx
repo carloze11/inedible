@@ -1,3 +1,5 @@
+import Login from "./Login";
+
 export default function Home() {
     return (
         <div className="container login-container">
@@ -15,12 +17,7 @@ export default function Home() {
                         </p>
                     </div>
                     <div className="divider"></div>
-                    <div className="section">
-                        <a href="/auth/google" className="btn red darken-1">
-                            <i className="fab fa-google left"></i> Log In With
-                            Google
-                        </a>
-                    </div>
+                    <div className="section"></div>
                 </div>
             </div>
         </div>

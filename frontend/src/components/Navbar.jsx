@@ -1,17 +1,29 @@
 import M from "materialize-css";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
+    const sidenavRef = useRef(null);
+
     useEffect(() => {
-        M.AutoInit();
+        M.Sidenav.init(sidenavRef.current);
     }, []);
+
+    const closeSidenav = () => {
+        const sidenavInstance = M.Sidenav.getInstance(sidenavRef.current);
+        sidenavInstance.close();
+    };
 
     return (
         <nav className="grey darken-3">
             <div className="nav-wrapper container">
-                <a href="#!" className="brand-logo center">
+                <Link
+                    to="/"
+                    className="brand-logo center"
+                    onClick={closeSidenav}
+                >
                     <i className="fa-solid fa-skull-crossbones"></i>InEdible
-                </a>
+                </Link>
                 <a
                     href="#"
                     data-target="mobile-demo"
@@ -19,18 +31,26 @@ export default function Navbar() {
                 >
                     <i className="fas fa-bars"></i>
                 </a>
-                <ul id="mobile-demo" className="sidenav">
+                <ul id="mobile-demo" className="sidenav" ref={sidenavRef}>
                     <li>
-                        <a href="/dashboard">Dashboard</a>
+                        <Link to="/dashboard" onClick={closeSidenav}>
+                            Dashboard
+                        </Link>
                     </li>
                     <li>
-                        <a href="/foods">Community Food</a>
+                        <Link to="/foods" onClick={closeSidenav}>
+                            Community Food
+                        </Link>
                     </li>
                     <li>
-                        <a href="/products/search">Search Products</a>
+                        <Link to="/products/search" onClick={closeSidenav}>
+                            Search Products
+                        </Link>
                     </li>
                     <li>
-                        <a href="/auth/logout">Logout</a>
+                        <a href="/auth/logout" onClick={closeSidenav}>
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
