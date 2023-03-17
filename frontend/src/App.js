@@ -14,7 +14,7 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <Navbar user={user} />
+                <Navbar />
                 <Routes>
                     <Route
                         path="/"
@@ -26,7 +26,10 @@ function App() {
                             )
                         }
                     />
-                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route
+                        path="/dashboard"
+                        element={!user ? <Home /> : <Dashboard />}
+                    />
                     <Route
                         path="/login"
                         element={
