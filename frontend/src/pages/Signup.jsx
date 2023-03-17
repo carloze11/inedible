@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
@@ -41,6 +42,9 @@ const Signup = () => {
             <button className="btn" disabled={isLoading}>
                 Sign up
             </button>
+            <Link to="/login" className="btn right">
+                Login
+            </Link>
             {isLoading && <div>Waiting for server...</div>}
             {error && <div className="error">{error}</div>}
         </form>

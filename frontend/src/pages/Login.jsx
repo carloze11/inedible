@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -33,6 +34,9 @@ const Login = () => {
             <button className="btn" disabled={isLoading}>
                 Login
             </button>
+            <Link to="/signup" className="btn right">
+                Signup
+            </Link>
             {isLoading && <div>Waiting for server...</div>}
             {error && <div className="error">{error}</div>}
         </form>
