@@ -2,22 +2,18 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 
-const {
-    getLogin,
-    postLogin,
-    getLogout,
-    signup,
-} = require("../controllers/auth");
+const { loginUser, signupUser, deleteUser } = require("../controllers/auth");
 
-router.post("/login", postLogin);
+router.post("/login", loginUser);
 
-router.post("/signup", signup);
+router.post("/signup", signupUser);
 
-router.get("/logout", getLogout);
+router.get("/delete-user", deleteUser);
+
+////GOOGLE OAUTH////
 
 router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
-////GOOGLE OAUTH////
 // google auth callback
 router.get(
     "/google/callback",

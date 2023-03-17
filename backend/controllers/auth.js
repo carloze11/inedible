@@ -30,7 +30,7 @@ exports.loginUser = async (req, res) => {
 };
 
 // signup user
-const signupUser = async (req, res) => {
+exports.signupUser = async (req, res) => {
     // get email and password from params
     const { email, password, confirmPassword } = req.body;
 
@@ -48,7 +48,7 @@ const signupUser = async (req, res) => {
 };
 
 // DELETE user :(
-const deleteUser = async (req, res) => {
+exports.deleteUser = async (req, res) => {
     try {
         const user_id = req.user._id;
 
