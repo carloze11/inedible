@@ -28,7 +28,7 @@ function App() {
                     />
                     <Route
                         path="/dashboard"
-                        element={!user ? <Home /> : <Dashboard />}
+                        element={!user ? <Home /> : <Dashboard user={user} />}
                     />
                     <Route
                         path="/login"

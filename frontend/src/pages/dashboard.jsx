@@ -1,9 +1,14 @@
+import { useAuthContext } from "../hooks/useAuthContext";
+
 export default function Dashboard(props) {
+    const user = useAuthContext();
+    const userProps = user.user;
+
     return (
-        <div>
-            <h6>Dashboard</h6>
-            <h3> Welcome {props.name}! </h3>
-            <p>Added Food List</p>
+        <div className="container">
+            <h1 className="center">Dashboard</h1>
+            <h3> Welcome {userProps.email}! </h3>
+            <h4>Added Food List</h4>
 
             {props.foods ? (
                 <table className="striped">
@@ -66,7 +71,7 @@ export default function Dashboard(props) {
                     </tbody>
                 </table>
             ) : (
-                <p>You got no food!</p>
+                <div className="card ">You got no food!</div>
             )}
         </div>
     );
