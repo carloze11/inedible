@@ -1,6 +1,7 @@
 const Food = require("../models/Food");
 
 exports.getHomePage = (req, res) => {
+    console.log("hi /");
     res.redirect("/");
 };
 

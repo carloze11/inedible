@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const homePageController = require("../controllers/homePage");
-const authController = require("../controllers/auth");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-router.get("/", ensureGuest, homePageController.getHomePage);
+router.get("/", homePageController.getHomePage);
+
 router.get("/dashboard", ensureAuth, homePageController.getDashboard);
 
 module.exports = router;
