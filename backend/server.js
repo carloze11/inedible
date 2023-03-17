@@ -65,7 +65,7 @@ app.use("/", indexRouter);
 // app.use("/products", productsRouter);
 // app.use("/recipes", recipesRouter);
 
-app.use("/auth", authRouter);
+app.use("/api/auth", authRouter);
 
 // app.use("/", (req, res) => {
 //     res.send({ hi: "Hello Cold, Dark World!" });

@@ -34,6 +34,7 @@ exports.signupUser = async (req, res) => {
     // get email and password from params
     const { email, password, confirmPassword } = req.body;
 
+    console.log(email);
     try {
         // create user using model static method
         const user = await User.signup(email, password, confirmPassword);
