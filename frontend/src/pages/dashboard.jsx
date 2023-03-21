@@ -1,5 +1,7 @@
 import { useAuthContext } from "../hooks/useAuthContext";
 
+import Addbtn from "../components/Addbtn";
+
 export default function Dashboard(props) {
     const user = useAuthContext();
     const userProps = user.user;
@@ -73,6 +75,7 @@ export default function Dashboard(props) {
             ) : (
                 <div className="card ">You got no food!</div>
             )}
+            <Addbtn />
         </div>
     );
 }
