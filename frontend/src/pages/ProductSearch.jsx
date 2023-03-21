@@ -1,6 +1,6 @@
-export default function Search() {
+const ProductSearch = () => {
     return (
-        <div>
+        <div className="container">
             <h1 className="center-align">
                 Search for food using the Spoonacular API!
             </h1>
@@ -18,4 +18,6 @@ export default function Search() {
             </form>
         </div>
     );
-}
+};
+
+export default ProductSearch;

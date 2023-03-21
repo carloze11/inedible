@@ -41,13 +41,13 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/foods" onClick={closeSidenav}>
-                            Community Food
+                        <Link to="/products/search" onClick={closeSidenav}>
+                            Search Products
                         </Link>
                     </li>
                     <li>
-                        <Link to="/products/search" onClick={closeSidenav}>
-                            Search Products
+                        <Link to="/account" onClick={closeSidenav}>
+                            My Account
                         </Link>
                     </li>
                     <li>
