@@ -56,13 +56,13 @@ app.use(passport.session());
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 // const foodsRouter = require("./routes/foods");
-// const productsRouter = require("./routes/products");
+const productsRouter = require("./routes/products");
 // const recipesRouter = require("./routes/recipes");
 
 app.use("/", indexRouter);
 
 // app.use("/foods", foodsRouter);
-// app.use("/products", productsRouter);
+app.use("/api/products", productsRouter);
 // app.use("/recipes", recipesRouter);
 
 app.use("/api/auth", authRouter);
