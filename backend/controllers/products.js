@@ -1,27 +1,21 @@
+const axios = require("axios");
 const keys = require("../config/keys");
 
-// Render search page for Spoonacular grocery products
-exports.getSearch = async (req, res) => {
-    res.render("products/search");
-};
-
 // Show search results from Spoonacular API
-exports.postResults = async (req, res) => {
-    console.log(req.body.productSearch);
+exports.productResults = async (req, res) => {
     try {
         if (!req.body.productSearch) {
             res.status(404);
         }
         let productSearch = req.body.productSearch.trim();
         const api_url = `https://api.spoonacular.com/food/products/search?query=${productSearch}&number=20&apiKey=${keys.spoonApiKey}`;
-        const data = await fetch(api_url);
-        const json = await data.json();
+        const { data } = await axios.get(api_url);
 
         const results = {
             productSearch: productSearch,
-            products: json.products,
-            total: json.totalProducts,
-            number: json.number,
+            products: data.products,
+            total: data.totalProducts,
+            number: data.number,
         };
 
         res.status(200).json(results);
@@ -32,7 +26,7 @@ exports.postResults = async (req, res) => {
 };
 
 // Show specific product information
-exports.getProduct = async (req, res) => {
+exports.productInfo = async (req, res) => {
     try {
         let productId = req.params.id;
         const api_url = `https://api.spoonacular.com/food/products/${productId}?apiKey=${process.env.SPOON_API_KEY}`;
