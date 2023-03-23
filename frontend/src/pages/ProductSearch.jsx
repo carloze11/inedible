@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useSpoonacular } from "../hooks/useSpoonacular";
+import SearchResults from "../components/SearchResults";
 
 const ProductSearch = () => {
     const [query, setQuery] = useState("");
-    const { searchSpoon } = useSpoonacular();
+    const { searchSpoon, queryData, isLoading } = useSpoonacular();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,6 +29,7 @@ const ProductSearch = () => {
                     <input type="submit" className="btn" />
                 </div>
             </form>
+            {!isLoading && <SearchResults queryData={queryData} />}
         </div>
     );
 };
