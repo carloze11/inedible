@@ -6,47 +6,33 @@ export default function SearchResults({ queryData }) {
                 '{total}' search results found for '{productSearch}'...
             </h5>
 
-            <div className="results-container">
-                {products.map((product) => {
-                    return (
-                        <div className="col s12 m4">
-                            <div className="card">
-                                <div className="card-content center-align col">
-                                    <h6>{product.title}</h6>
-                                    <img src={product.image} alt="" />
-                                </div>
-                                <div className="card-action center-align">
-                                    <a
-                                        href={`/products/results/${product.id}`}
-                                        className="btn grey"
-                                    >
-                                        See More
-                                    </a>
-                                </div>
+            <div className="row">
+                {products.map((product) => (
+                    <div className="col s12 m4" key={product.id}>
+                        <div className="card">
+                            <div className="card-image">
+                                <img src={product.image} alt="" />
+                            </div>
+                            <div className="card-content"></div>
+                            <span className="card-title">{product.title}</span>
+                            <div className="card-action">
+                                <a href={`/products/results/${product.id}`}>
+                                    See More
+                                </a>
                             </div>
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
             </div>
-
-            <div className="card-action center-align">
-                <form action="/products/results" method="POST">
-                    <input
-                        type="text"
-                        name="productSearch"
-                        id="productSearch"
-                        defaultValue={productSearch}
-                        hidden
-                    />
-                    <button
-                        type="submit"
-                        className="btn grey"
-                        name="showMore"
-                        value="10"
-                    >
-                        Show More
-                    </button>
-                </form>
+            <div className="col s12">
+                <button
+                    type="submit"
+                    className="btn grey"
+                    name="showMore"
+                    value="10"
+                >
+                    Show More
+                </button>
             </div>
         </div>
     );
