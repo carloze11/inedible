@@ -1,8 +1,12 @@
 import he from "he";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import ProductInfo from "./ProductInfo";
 
 export default function SearchResults({ queryData }) {
+    const [productId, setProductId] = useState(false);
     const { productSearch, products, total, number } = queryData;
+
     return (
         <div>
             <h5>
@@ -23,20 +27,24 @@ export default function SearchResults({ queryData }) {
                             <div className="card-content">
                                 <span
                                     className="card-title"
-                                    style={{ "text-align": "center" }}
+                                    style={{ textAlign: "center" }}
                                 >
                                     {he.decode(product.title)}
                                 </span>
                                 <div className="card-action">
-                                    <Link to="/products/search/info">
+                                    <button
+                                        className="btn"
+                                        onClick={() => setProductId(product.id)}
+                                    >
                                         See More
-                                    </Link>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
+            {productId ? <ProductInfo productId={productId} /> : <> </>}
             <div className="col s12 center">
                 <button
                     type="submit"

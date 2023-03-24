@@ -11,7 +11,6 @@ import Dashboard from "./pages/Dashboard";
 import ProductSearch from "./pages/ProductSearch";
 import Account from "./pages/Account";
 import Footer from "./components/Footer";
-import ProductInfo from "./pages/ProductInfo";
 
 function App() {
     const { user } = useAuthContext();
@@ -52,10 +51,6 @@ function App() {
                         <Route
                             path="/products/search"
                             element={!user ? <Home /> : <ProductSearch />}
-                        />
-                        <Route
-                            path="/products/search/info"
-                            element={!user ? <Home /> : <ProductInfo />}
                         />
                         <Route
                             path="/account"
