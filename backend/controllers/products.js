@@ -32,15 +32,11 @@ exports.productInfo = async (req, res) => {
         const api_url = `https://api.spoonacular.com/food/products/${productId}?apiKey=${keys.spoonApiKey}`;
         const { data } = await axios.get(api_url);
 
-        console.log(data);
-
         const results = {
             title: data.title,
             description: data.description,
             image: data.image,
         };
-
-        console.log(results);
 
         res.status(200).json(results);
     } catch (err) {
