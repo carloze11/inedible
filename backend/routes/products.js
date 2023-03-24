@@ -4,6 +4,6 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const { productResults, productInfo } = require("../controllers/products");
 
 router.post("/results", productResults);
-router.get("/results/:id", productInfo);
+router.post("/results/:id", productInfo);
 
 module.exports = router;
