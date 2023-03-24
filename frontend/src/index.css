@@ -65,3 +65,12 @@ form.login {
     padding-top: 5px !important;
     margin-top: 20px;
 }
+
+.footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 75px;
+    margin-top: 20px;
+}

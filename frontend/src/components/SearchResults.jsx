@@ -22,7 +22,10 @@ export default function SearchResults({ queryData }) {
                                 />
                             </div>
                             <div className="card-content">
-                                <span className="card-title">
+                                <span
+                                    className="card-title"
+                                    style={{ "text-align": "center" }}
+                                >
                                     {he.decode(product.title)}
                                 </span>
                                 <div className="card-action">
@@ -41,7 +44,7 @@ export default function SearchResults({ queryData }) {
                     </div>
                 ))}
             </div>
-            <div className="col s12">
+            <div className="col s12 center">
                 <button
                     type="submit"
                     className="btn grey"

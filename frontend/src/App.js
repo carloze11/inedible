@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import ProductSearch from "./pages/ProductSearch";
 import Account from "./pages/Account";
+import Footer from "./components/Footer";
 
 function App() {
     const { user } = useAuthContext();
@@ -49,6 +50,7 @@ function App() {
                         element={!user ? <Home /> : <Account />}
                     />
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </div>
     );
