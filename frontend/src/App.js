@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import ProductSearch from "./pages/ProductSearch";
 import Account from "./pages/Account";
 import Footer from "./components/Footer";
+import ProductInfo from "./pages/ProductInfo";
 
 function App() {
     const { user } = useAuthContext();
@@ -18,38 +19,50 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Navbar user={user} />
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            !user ? <Home /> : <Navigate to="/dashboard" />
-                        }
-                    />
-                    <Route
-                        path="/dashboard"
-                        element={!user ? <Home /> : <Dashboard user={user} />}
-                    />
-                    <Route
-                        path="/login"
-                        element={
-                            !user ? <Login /> : <Navigate to="/dashboard" />
-                        }
-                    />
-                    <Route
-                        path="/signup"
-                        element={
-                            !user ? <Signup /> : <Navigate to="/dashboard" />
-                        }
-                    />
-                    <Route
-                        path="/products/search"
-                        element={!user ? <Home /> : <ProductSearch />}
-                    />
-                    <Route
-                        path="/account"
-                        element={!user ? <Home /> : <Account />}
-                    />
-                </Routes>
+                <div className="ult-container">
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                !user ? <Home /> : <Navigate to="/dashboard" />
+                            }
+                        />
+                        <Route
+                            path="/dashboard"
+                            element={
+                                !user ? <Home /> : <Dashboard user={user} />
+                            }
+                        />
+                        <Route
+                            path="/login"
+                            element={
+                                !user ? <Login /> : <Navigate to="/dashboard" />
+                            }
+                        />
+                        <Route
+                            path="/signup"
+                            element={
+                                !user ? (
+                                    <Signup />
+                                ) : (
+                                    <Navigate to="/dashboard" />
+                                )
+                            }
+                        />
+                        <Route
+                            path="/products/search"
+                            element={!user ? <Home /> : <ProductSearch />}
+                        />
+                        <Route
+                            path="/products/search/info"
+                            element={!user ? <Home /> : <ProductInfo />}
+                        />
+                        <Route
+                            path="/account"
+                            element={!user ? <Home /> : <Account />}
+                        />
+                    </Routes>
+                </div>
                 <Footer />
             </BrowserRouter>
         </div>

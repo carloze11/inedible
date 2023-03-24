@@ -1,6 +1,5 @@
 import he from "he";
 import { Link } from "react-router-dom";
-import ProductInfo from "../pages/ProductInfo";
 
 export default function SearchResults({ queryData }) {
     const { productSearch, products, total, number } = queryData;
@@ -29,13 +28,7 @@ export default function SearchResults({ queryData }) {
                                     {he.decode(product.title)}
                                 </span>
                                 <div className="card-action">
-                                    <Link
-                                        to={
-                                            <ProductInfo
-                                                productId={product.id}
-                                            />
-                                        }
-                                    >
+                                    <Link to="/products/search/info">
                                         See More
                                     </Link>
                                 </div>
