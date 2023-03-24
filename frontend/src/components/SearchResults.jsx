@@ -1,3 +1,4 @@
+import he from "he";
 import { Link } from "react-router-dom";
 import ProductInfo from "../pages/ProductInfo";
 
@@ -22,7 +23,7 @@ export default function SearchResults({ queryData }) {
                             </div>
                             <div className="card-content">
                                 <span className="card-title">
-                                    {product.title}
+                                    {he.decode(product.title)}
                                 </span>
                                 <div className="card-action">
                                     <Link
