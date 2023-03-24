@@ -8,7 +8,7 @@ const ProductSearch = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        searchSpoon(query);
+        searchSpoon("products", query);
     };
 
     return (

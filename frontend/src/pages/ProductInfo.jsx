@@ -1,4 +1,6 @@
-export default function ShowProduct({ title, image, description }) {
+import { useSpoonacular } from "../hooks/useSpoonacular";
+
+export default function ProductInfo({ title, image, description }) {
     return (
         <div>
             <div className="row">

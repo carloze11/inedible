@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import ProductInfo from "../pages/ProductInfo";
+
 export default function SearchResults({ queryData }) {
     const { productSearch, products, total, number } = queryData;
     return (
@@ -22,9 +25,15 @@ export default function SearchResults({ queryData }) {
                                     {product.title}
                                 </span>
                                 <div className="card-action">
-                                    <a href={`/products/results/${product.id}`}>
+                                    <Link
+                                        to={
+                                            <ProductInfo
+                                                productId={product.id}
+                                            />
+                                        }
+                                    >
                                         See More
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

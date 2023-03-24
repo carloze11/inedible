@@ -5,13 +5,13 @@ export const useSpoonacular = () => {
     const [error, setError] = useState(null);
     const [queryData, setQueryData] = useState(null);
 
-    const searchSpoon = async (productSearch) => {
+    const searchSpoon = async (type, querySearch, id = "") => {
         setIsLoading(true);
 
-        const response = await fetch("/api/products/results", {
+        const response = await fetch(`/api/${type}/results/${id}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ productSearch }),
+            body: JSON.stringify({ querySearch }),
         });
 
         const json = await response.json();
