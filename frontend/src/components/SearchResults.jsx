@@ -11,14 +11,21 @@ export default function SearchResults({ queryData }) {
                     <div className="col s12 m4" key={product.id}>
                         <div className="card">
                             <div className="card-image">
-                                <img src={product.image} alt="" />
+                                <img
+                                    src={product.image}
+                                    alt=""
+                                    className="responsive-img"
+                                />
                             </div>
-                            <div className="card-content"></div>
-                            <span className="card-title">{product.title}</span>
-                            <div className="card-action">
-                                <a href={`/products/results/${product.id}`}>
-                                    See More
-                                </a>
+                            <div className="card-content">
+                                <span className="card-title">
+                                    {product.title}
+                                </span>
+                                <div className="card-action">
+                                    <a href={`/products/results/${product.id}`}>
+                                        See More
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
