@@ -32,13 +32,14 @@ exports.productInfo = async (req, res) => {
         let productId = req.params.id;
         const api_url = `https://api.spoonacular.com/food/products/${productId}?apiKey=${keys.spoonApiKey}`;
         const { data } = await axios.get(api_url);
+        const sanitizedTitle = he.decode(data.title);
         const sanitizedDescription = he
             .decode(data.description)
             .replace(/Â/g, "")
             .replace(/\(at\)/g, "@");
 
         const results = {
-            title: data.title,
+            title: sanitizedTitle,
             description: sanitizedDescription,
             image: data.image,
         };
