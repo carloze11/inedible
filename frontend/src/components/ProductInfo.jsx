@@ -17,14 +17,13 @@ export default function ProductInfo({
     // Search for a specific product's info using Spoonacular hook
     useEffect(() => {
         searchSpoon("products", "", productId);
-        setPageScroll(true);
-    }, [clicked, productId]);
 
-    // Disable/enable page scrolling when product info is displayed
-    useEffect(() => {
+        // Disable/enable page scrolling when product info is displayed
         const body = document.querySelector("body");
         pageScroll ? disableScroll(body) : enableScroll(body);
-    }, [pageScroll]);
+
+        setPageScroll(true);
+    }, [clicked, productId, pageScroll]);
 
     return (
         <>
@@ -46,8 +45,8 @@ export default function ProductInfo({
                         <button
                             className="btn red dark-3"
                             onClick={() => {
-                                setIsLoading(true);
                                 setPageScroll(false);
+                                setIsLoading(true);
                                 setShowProductInfo(false);
                                 setClicked(false);
                             }}
