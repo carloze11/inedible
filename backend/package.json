@@ -32,6 +32,7 @@
         "express-session": "^1.17.3",
         "global": "^4.4.0",
         "google-auth-library": "^8.7.0",
+        "he": "^1.2.0",
         "jsonwebtoken": "^9.0.0",
         "materialize-css": "^1.0.0-rc.2",
         "method-override": "^3.0.0",

@@ -1,5 +1,6 @@
 const axios = require("axios");
 const keys = require("../config/keys");
+const he = require("he");
 
 // Show search results from Spoonacular API
 exports.productResults = async (req, res) => {
@@ -31,10 +32,14 @@ exports.productInfo = async (req, res) => {
         let productId = req.params.id;
         const api_url = `https://api.spoonacular.com/food/products/${productId}?apiKey=${keys.spoonApiKey}`;
         const { data } = await axios.get(api_url);
+        const sanitizedDescription = he
+            .decode(data.description)
+            .replace(/Â/g, "")
+            .replace(/\(at\)/g, "@");
 
         const results = {
             title: data.title,
-            description: data.description,
+            description: sanitizedDescription,
             image: data.image,
         };
 
