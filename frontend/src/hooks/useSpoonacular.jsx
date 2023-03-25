@@ -25,5 +25,5 @@ export const useSpoonacular = () => {
             setIsLoading(false);
         }
     };
-    return { searchSpoon, queryData, isLoading, error };
+    return { searchSpoon, queryData, isLoading, setIsLoading, error };
 };

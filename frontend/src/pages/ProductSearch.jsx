@@ -13,9 +13,7 @@ const ProductSearch = () => {
 
     return (
         <div className="container">
-            <h1 className="center-align">
-                Search for food using the Spoonacular API!
-            </h1>
+            <h3 className="center-align">Spoonacular Product Search</h3>
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <label htmlFor="productSearch">Search</label>

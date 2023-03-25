@@ -1,18 +1,28 @@
 import { useEffect, useState } from "react";
 import { useSpoonacular } from "../hooks/useSpoonacular";
 
+import { disableScroll, enableScroll } from "../utils/toggleScrolling";
+
 export default function ProductInfo({ productId }) {
-    const { searchSpoon, queryData, isLoading } = useSpoonacular();
+    const [pageScroll, setPageScroll] = useState(false);
+    const { searchSpoon, queryData, isLoading, setIsLoading } =
+        useSpoonacular();
     useEffect(() => {
         searchSpoon("products", "", productId);
-    }, []);
+        setPageScroll(true);
+    }, [productId]);
 
+    useEffect(() => {
+        const body = document.querySelector("body");
+
+        pageScroll ? disableScroll() : enableScroll();
+    }, [pageScroll]);
     return (
         <>
-            {queryData ? (
-                <div className="row">
+            {!isLoading ? (
+                <div className="info-card">
                     <div className="col s12 m8">
-                        <h3>{queryData.title}</h3>
+                        <h6>{queryData.title}</h6>
                         <div>
                             <img src={queryData.image} alt="" />
                         </div>
@@ -22,6 +32,15 @@ export default function ProductInfo({ productId }) {
                                 {queryData.description}
                             </div>
                         </div>
+                        <button
+                            className="btn red dark-3"
+                            onClick={() => {
+                                setIsLoading(true);
+                                setPageScroll(false);
+                            }}
+                        >
+                            Close
+                        </button>
                     </div>
                 </div>
             ) : (
