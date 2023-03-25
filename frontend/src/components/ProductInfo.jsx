@@ -7,6 +7,8 @@ export default function ProductInfo({
     productId,
     showProductInfo,
     setShowProductInfo,
+    clicked,
+    setClicked,
 }) {
     const [pageScroll, setPageScroll] = useState(false);
     const { searchSpoon, queryData, isLoading, setIsLoading } =
@@ -16,7 +18,7 @@ export default function ProductInfo({
     useEffect(() => {
         searchSpoon("products", "", productId);
         setPageScroll(true);
-    }, [productId]);
+    }, [clicked, productId]);
 
     // Disable/enable page scrolling when product info is displayed
     useEffect(() => {
@@ -44,8 +46,10 @@ export default function ProductInfo({
                         <button
                             className="btn red dark-3"
                             onClick={() => {
+                                setIsLoading(true);
                                 setPageScroll(false);
                                 setShowProductInfo(false);
+                                setClicked(false);
                             }}
                         >
                             Close

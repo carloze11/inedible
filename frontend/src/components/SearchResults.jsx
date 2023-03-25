@@ -5,6 +5,7 @@ import ProductInfo from "./ProductInfo";
 
 export default function SearchResults({ queryData }) {
     const [productId, setProductId] = useState(false);
+    const [clicked, setClicked] = useState(false);
     const [showProductInfo, setShowProductInfo] = useState(false);
     const { productSearch, products, total, number } = queryData;
 
@@ -38,6 +39,7 @@ export default function SearchResults({ queryData }) {
                                         onClick={() => {
                                             setProductId(product.id);
                                             setShowProductInfo(true);
+                                            setClicked(true);
                                         }}
                                     >
                                         See More
@@ -53,6 +55,8 @@ export default function SearchResults({ queryData }) {
                     productId={productId}
                     showProductInfo={showProductInfo}
                     setShowProductInfo={setShowProductInfo}
+                    clicked={clicked}
+                    setClicked={setClicked}
                 />
             ) : (
                 <> </>
