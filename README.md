@@ -25,8 +25,8 @@
 
 <h3 align="center">InEdible</h3>
 
-  <p align="center">
-    InEdible is a full-stack web application currently in the process of being rebuilt using the MERN stack. InEdible was built to identify potential allergens and trigger ingredients present in users' preferred food items, such as dairy, gluten, or nuts. By using Inedible, I am hoping to enable users to make informed decisions about their dietary choices and avoid potentially harmful foods with ease.
+  <p align="justify">
+    InEdible is a full-stack web application currently in the process of being rebuilt using the MERN stack. InEdible was built to identify potential allergens and trigger ingredients present in users' preferred food items, such as dairy, gluten, or nuts. By using InEdible, I am hoping to enable users to make informed decisions about their dietary choices and avoid potentially harmful foods with ease.
     <br />
     <a href="https://github.com/carloze11/inedible"><strong>Explore the docs »</strong></a>
     <br />
