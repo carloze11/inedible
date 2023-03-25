@@ -7,16 +7,19 @@ export default function ProductInfo({ productId }) {
     const [pageScroll, setPageScroll] = useState(false);
     const { searchSpoon, queryData, isLoading, setIsLoading } =
         useSpoonacular();
+
+    // Search for a specific product's info using Spoonacular hook
     useEffect(() => {
         searchSpoon("products", "", productId);
         setPageScroll(true);
     }, [productId]);
 
+    // Disable/enable page scrolling when product info is displayed
     useEffect(() => {
         const body = document.querySelector("body");
-
-        pageScroll ? disableScroll() : enableScroll();
+        pageScroll ? disableScroll(body) : enableScroll(body);
     }, [pageScroll]);
+
     return (
         <>
             {!isLoading ? (

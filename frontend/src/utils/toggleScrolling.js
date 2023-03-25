@@ -1,10 +1,9 @@
-// Simple util to prevent body scrolling during pop up elements
-const body = document.querySelector("body");
+// Simple util to prevent element scrolling during pop up elements
 
-export function disableScroll() {
-    body.style.overflow = "hidden";
+export function disableScroll(element) {
+    element.style.overflow = "hidden";
 }
 
-export function enableScroll() {
-    body.style.overflow = "auto";
+export function enableScroll(element) {
+    element.style.overflow = "auto";
 }
