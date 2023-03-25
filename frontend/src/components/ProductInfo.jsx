@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import { useSpoonacular } from "../hooks/useSpoonacular";
 import { disableScroll, enableScroll } from "../utils/toggleScrolling";
 
-export default function ProductInfo({ productId }) {
+export default function ProductInfo({
+    productId,
+    showProductInfo,
+    setShowProductInfo,
+}) {
     const [pageScroll, setPageScroll] = useState(false);
     const { searchSpoon, queryData, isLoading, setIsLoading } =
         useSpoonacular();
@@ -22,7 +26,7 @@ export default function ProductInfo({ productId }) {
 
     return (
         <>
-            {!isLoading ? (
+            {!isLoading && showProductInfo ? (
                 <div className="info-card">
                     <div className="">
                         <h6>{queryData.title}</h6>
@@ -40,8 +44,8 @@ export default function ProductInfo({ productId }) {
                         <button
                             className="btn red dark-3"
                             onClick={() => {
-                                setIsLoading(true);
                                 setPageScroll(false);
+                                setShowProductInfo(false);
                             }}
                         >
                             Close

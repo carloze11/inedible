@@ -1,9 +1,11 @@
 import { useState } from "react";
+import he from "he";
 
 import ProductInfo from "./ProductInfo";
 
 export default function SearchResults({ queryData }) {
     const [productId, setProductId] = useState(false);
+    const [showProductInfo, setShowProductInfo] = useState(false);
     const { productSearch, products, total, number } = queryData;
 
     return (
@@ -28,12 +30,15 @@ export default function SearchResults({ queryData }) {
                                     className="card-title"
                                     style={{ textAlign: "center" }}
                                 >
-                                    {product.title}
+                                    {he.decode(product.title)}
                                 </span>
                                 <div className="card-action">
                                     <button
                                         className="btn"
-                                        onClick={() => setProductId(product.id)}
+                                        onClick={() => {
+                                            setProductId(product.id);
+                                            setShowProductInfo(true);
+                                        }}
                                     >
                                         See More
                                     </button>
@@ -43,7 +48,15 @@ export default function SearchResults({ queryData }) {
                     </div>
                 ))}
             </div>
-            {productId ? <ProductInfo productId={productId} /> : <> </>}
+            {productId ? (
+                <ProductInfo
+                    productId={productId}
+                    showProductInfo={showProductInfo}
+                    setShowProductInfo={setShowProductInfo}
+                />
+            ) : (
+                <> </>
+            )}
             <div className="col s12 center">
                 <button
                     type="submit"
