@@ -1,4 +1,3 @@
-import he from "he";
 import { useState } from "react";
 
 import ProductInfo from "./ProductInfo";
@@ -29,7 +28,7 @@ export default function SearchResults({ queryData }) {
                                     className="card-title"
                                     style={{ textAlign: "center" }}
                                 >
-                                    {he.decode(product.title)}
+                                    {product.title}
                                 </span>
                                 <div className="card-action">
                                     <button

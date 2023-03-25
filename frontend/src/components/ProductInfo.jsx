@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useSpoonacular } from "../hooks/useSpoonacular";
 
+import { useSpoonacular } from "../hooks/useSpoonacular";
 import { disableScroll, enableScroll } from "../utils/toggleScrolling";
 
 export default function ProductInfo({ productId }) {
@@ -24,16 +24,18 @@ export default function ProductInfo({ productId }) {
         <>
             {!isLoading ? (
                 <div className="info-card">
-                    <div className="col s12 m8">
+                    <div className="">
                         <h6>{queryData.title}</h6>
                         <div>
                             <img src={queryData.image} alt="" />
                         </div>
-                        <div className="card story">
-                            <div className="card-content">
-                                {/* <span className="card-title"> {{formatDate date ' MMMM Do YYYY, h:mm:ss a'}} </span>  */}
-                                {queryData.description}
-                            </div>
+                        <div className="">
+                            <div
+                                className=""
+                                dangerouslySetInnerHTML={{
+                                    __html: queryData.description,
+                                }}
+                            ></div>
                         </div>
                         <button
                             className="btn red dark-3"
