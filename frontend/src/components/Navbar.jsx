@@ -60,14 +60,13 @@ export default function Navbar({ user }) {
     };
 
     return (
-        <nav className="grey darken-3">
-            <div className="nav-wrapper container">
+        <nav className="nav">
+            <div className="nav-logo">
                 <Link
                     to="/"
                     className="brand-logo center"
                     onClick={closeSidenav}
                 >
-                    <i className="fa-solid fa-skull-crossbones"></i>
                     InEdible
                 </Link>
                 {user ? renderMenu() : <></>}

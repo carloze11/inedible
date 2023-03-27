@@ -29,21 +29,29 @@ export default function ProductInfo({
         <>
             {!isLoading && showProductInfo ? (
                 <div className="info-card">
+                    <h6>{queryData.title}</h6>
+                    <div className="info-img-div">
+                        <img src={queryData.image} alt="" />
+                    </div>
                     <div className="">
-                        <h6>{queryData.title}</h6>
-                        <div>
-                            <img src={queryData.image} alt="" />
-                        </div>
-                        <div className="">
-                            <div
-                                className=""
-                                dangerouslySetInnerHTML={{
-                                    __html: queryData.description,
-                                }}
-                            ></div>
-                        </div>
+                        <h6>Product Details</h6>
+                        <div
+                            className="info-desc"
+                            dangerouslySetInnerHTML={{
+                                __html: queryData.description,
+                            }}
+                        ></div>
+                    </div>
+                    <div>
+                        <h6>Ingredients</h6>
+                    </div>
+                    <div>
+                        <h6>Allergen Info</h6>
+                    </div>
+                    <div className="info-btn-div">
+                        <button className="btn info-btn">Save</button>
                         <button
-                            className="btn red dark-3"
+                            className="btn red dark-3 info-btn"
                             onClick={() => {
                                 setPageScroll(false);
                                 setIsLoading(true);
