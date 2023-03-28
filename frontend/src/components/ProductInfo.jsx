@@ -29,7 +29,10 @@ export default function ProductInfo({
         <>
             {!isLoading && showProductInfo ? (
                 <div className="info-card">
-                    <h6>{queryData.title}</h6>
+                    <div className="info-title">
+                        <h6>{queryData.title}</h6>
+                    </div>
+
                     <div className="info-img-div">
                         <img src={queryData.image} alt="" />
                     </div>
@@ -42,8 +45,9 @@ export default function ProductInfo({
                             }}
                         ></div>
                     </div>
-                    <div>
+                    <div className="info-ingredients">
                         <h6>Ingredients</h6>
+                        <p>{queryData.ingredients}</p>
                     </div>
                     <div>
                         <h6>Allergen Info</h6>

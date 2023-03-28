@@ -108,14 +108,19 @@ form.login {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     border: 5px black solid;
     border-radius: 5%;
     background-color: white;
     overflow: auto;
-    padding: 10px;
+    padding: 15px;
 }
+
+.info-title h6 {
+    font-weight: 600;
+}
+
 .info-img-div {
     display: flex;
     justify-content: center;
@@ -124,6 +129,16 @@ form.login {
 
 .info-desc {
     line-height: 1.2rem;
+}
+
+.info-desc ul {
+    margin-top: 0;
+}
+
+.info-ingredients p {
+    margin-top: 0;
+    font-size: 1rem;
+    line-height: 1.2rem !important;
 }
 
 .info-btn-div {
