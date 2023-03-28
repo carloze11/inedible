@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    min-height: 100vh;
+    box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
@@ -9,7 +9,7 @@ body {
 }
 
 .ult-container {
-    height: 100%;
+    height: 100vh;
 }
 
 .nav {
@@ -44,6 +44,21 @@ form.login {
     border-radius: 5px;
     border: 3px solid var(--primary);
     font-size: 1.5rem;
+}
+
+.searchbar {
+    padding-top: 25px;
+}
+
+.searchbar input:first-child {
+    font-size: 1.3rem;
+    padding: 0 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.searchbar input:first-child:active {
+    border: 2px solid darkgreen !important;
 }
 
 .card {

@@ -13,14 +13,13 @@ const ProductSearch = () => {
 
     return (
         <div className="container">
-            <h3 className="center-align">Spoonacular Product Search</h3>
             <form onSubmit={handleSubmit}>
-                <div className="row">
-                    <label htmlFor="productSearch">Search</label>
+                <div className="searchbar">
                     <input
                         type="text"
                         name="productSearch"
                         id="productSearch"
+                        placeholder="Search Products"
                         onChange={(e) => setQuery(e.target.value)}
                         required
                     />

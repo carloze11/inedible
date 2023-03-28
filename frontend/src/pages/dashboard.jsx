@@ -9,8 +9,7 @@ export default function Dashboard(props) {
     return (
         <div className="container">
             <h1 className="center">Dashboard</h1>
-            <h3> Welcome {userProps.email}! </h3>
-            <h4>Added Food List</h4>
+            <h4>Saved Products</h4>
 
             {props.foods ? (
                 <table className="striped">
