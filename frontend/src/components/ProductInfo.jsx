@@ -20,11 +20,11 @@ export default function ProductInfo({
         setPageScroll(true);
     }, [clicked, productId]);
 
-    useEffect(() => {
-        // Disable/enable page scrolling when product info is displayed
-        const body = document.querySelector("body");
-        pageScroll ? disableScroll(body) : enableScroll(body);
-    }, [pageScroll]);
+    // useEffect(() => {
+    //     // Disable/enable page scrolling when product info is displayed
+    //     const body = document.querySelector("body");
+    //     pageScroll ? disableScroll(body) : enableScroll(body);
+    // }, [pageScroll]);
 
     return (
         <>
