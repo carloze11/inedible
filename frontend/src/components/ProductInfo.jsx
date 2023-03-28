@@ -49,9 +49,30 @@ export default function ProductInfo({
                         <h6>Ingredients</h6>
                         <p>{queryData.ingredients}</p>
                     </div>
-                    <div>
-                        <h6>Allergen Info</h6>
+                    <div className="info-disclaimer">
+                        <h6>Disclaimer</h6>
+                        <p>
+                            Actual product packaging and materials may contain
+                            additional and/or different ingredient, nutritional,
+                            or proper usage information than the information
+                            displayed on our website. You are responsible for
+                            reading labels, warnings, and directions prior to
+                            using or consuming a product. If you have food
+                            sensitivities or allergies, you should always read
+                            the actual product labels to confirm the safety of
+                            the product for your situation. Content on this
+                            website is for general reference purposes only and
+                            is not intended to substitute for advice by a
+                            physician, pharmacist, or other licensed health care
+                            professional. You should not use the information
+                            presented on this website for self-diagnosis or for
+                            treating a health problem. All products may not be
+                            available in all stores. See your local store for
+                            specific offerings. Kroger assumes no liability for
+                            inaccuracies or misstatements regarding any product.
+                        </p>
                     </div>
+
                     <div className="info-btn-div">
                         <button className="btn info-btn">Save</button>
                         <button
