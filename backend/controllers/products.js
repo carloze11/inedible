@@ -37,11 +37,17 @@ exports.productInfo = async (req, res) => {
             .decode(data.description)
             .replace(/Â/g, "")
             .replace(/\(at\)/g, "@");
+        const ingredients = data.ingredients
+            .map((ingredient) => {
+                return ingredient.name;
+            })
+            .join(", ");
 
         const results = {
             title: sanitizedTitle,
-            description: sanitizedDescription,
             image: data.image,
+            description: sanitizedDescription,
+            ingredients: ingredients,
         };
 
         res.status(200).json(results);
