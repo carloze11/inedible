@@ -33,10 +33,16 @@ exports.productInfo = async (req, res) => {
         const api_url = `https://api.spoonacular.com/food/products/${productId}?apiKey=${keys.spoonApiKey}`;
         const { data } = await axios.get(api_url);
         const sanitizedTitle = he.decode(data.title);
+        const description = data.description;
         const sanitizedDescription = he
-            .decode(data.description)
+            .decode(description)
+            .replace(/<\/?[^>]+>/g, "")
+            .split("  ")
+            .filter((el) => el !== "")
+            .join(". ")
             .replace(/Â/g, "")
             .replace(/\(at\)/g, "@");
+
         const ingredients = data.ingredients
             .map((ingredient) => {
                 return ingredient.name;
