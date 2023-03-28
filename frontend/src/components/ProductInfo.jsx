@@ -17,13 +17,14 @@ export default function ProductInfo({
     // Search for a specific product's info using Spoonacular hook
     useEffect(() => {
         searchSpoon("products", "", productId);
+        setPageScroll(true);
+    }, [clicked, productId]);
 
+    useEffect(() => {
         // Disable/enable page scrolling when product info is displayed
         const body = document.querySelector("body");
         pageScroll ? disableScroll(body) : enableScroll(body);
-
-        setPageScroll(true);
-    }, [clicked, productId, pageScroll]);
+    }, [pageScroll]);
 
     return (
         <>
@@ -38,12 +39,7 @@ export default function ProductInfo({
                     </div>
                     <div className="">
                         <h6>Product Details</h6>
-                        <div
-                            className="info-desc"
-                            dangerouslySetInnerHTML={{
-                                __html: queryData.description,
-                            }}
-                        ></div>
+                        <div className="info-desc">{queryData.description}</div>
                     </div>
                     <div className="info-ingredients">
                         <h6>Ingredients</h6>

@@ -5,5 +5,5 @@ export function disableScroll(element) {
 }
 
 export function enableScroll(element) {
-    element.style.overflow = "auto";
+    element.style.overflow = "scroll";
 }
