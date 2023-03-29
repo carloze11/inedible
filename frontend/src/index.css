@@ -135,7 +135,8 @@ form.login {
     margin-top: 0;
 }
 
-.info-ingredients p {
+.info-ingredients p,
+.info-disclaimer p {
     margin-top: 0;
     font-size: 1rem;
     line-height: 1.2rem !important;

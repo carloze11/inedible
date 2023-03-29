@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import he from "he";
 
 import ProductInfo from "./ProductInfo";
+import { disableScroll, enableScroll } from "../utils/toggleScrolling";
 
 export default function SearchResults({ queryData }) {
     const [productId, setProductId] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [showProductInfo, setShowProductInfo] = useState(false);
+    const [pageScroll, setPageScroll] = useState(true);
     const { productSearch, products, total, number } = queryData;
+
+    // Disable/enable page scrolling when product info is displayed
+    useEffect(() => {
+        const body = document.querySelector("body");
+        !pageScroll ? disableScroll(body) : enableScroll(body);
+    }, [pageScroll]);
 
     return (
         <div>
@@ -57,6 +65,8 @@ export default function SearchResults({ queryData }) {
                     setShowProductInfo={setShowProductInfo}
                     clicked={clicked}
                     setClicked={setClicked}
+                    pageScroll={pageScroll}
+                    setPageScroll={setPageScroll}
                 />
             ) : (
                 <> </>

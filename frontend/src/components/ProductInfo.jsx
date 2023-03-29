@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import { useSpoonacular } from "../hooks/useSpoonacular";
-import { disableScroll, enableScroll } from "../utils/toggleScrolling";
 
 export default function ProductInfo({
     productId,
@@ -9,22 +8,17 @@ export default function ProductInfo({
     setShowProductInfo,
     clicked,
     setClicked,
+    pageScroll,
+    setPageScroll,
 }) {
-    const [pageScroll, setPageScroll] = useState(false);
     const { searchSpoon, queryData, isLoading, setIsLoading } =
         useSpoonacular();
 
     // Search for a specific product's info using Spoonacular hook
     useEffect(() => {
         searchSpoon("products", "", productId);
-        setPageScroll(true);
+        pageScroll ? setPageScroll(false) : setPageScroll(true);
     }, [clicked, productId]);
-
-    // useEffect(() => {
-    //     // Disable/enable page scrolling when product info is displayed
-    //     const body = document.querySelector("body");
-    //     pageScroll ? disableScroll(body) : enableScroll(body);
-    // }, [pageScroll]);
 
     return (
         <>
@@ -74,7 +68,6 @@ export default function ProductInfo({
                         <button
                             className="btn red dark-3 info-btn"
                             onClick={() => {
-                                setPageScroll(false);
                                 setIsLoading(true);
                                 setShowProductInfo(false);
                                 setClicked(false);
