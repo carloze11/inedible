@@ -100,6 +100,14 @@ form.login {
     margin-top: 20px;
 }
 
+.heart-btn {
+    margin-right: 10px;
+}
+
+.heart-btn:hover {
+    background-color: lightpink;
+}
+
 .info-card {
     display: flex;
     flex-direction: column;

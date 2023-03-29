@@ -42,6 +42,9 @@ export default function SearchResults({ queryData }) {
                                     {he.decode(product.title)}
                                 </span>
                                 <div className="card-action">
+                                    <button className="btn heart-btn">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
                                     <button
                                         className="btn"
                                         onClick={() => {
@@ -50,7 +53,7 @@ export default function SearchResults({ queryData }) {
                                             setClicked(true);
                                         }}
                                     >
-                                        See More
+                                        Info
                                     </button>
                                 </div>
                             </div>
