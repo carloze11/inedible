@@ -2,6 +2,9 @@ const axios = require("axios");
 const keys = require("../config/keys");
 const he = require("he");
 
+const User = require("../models/User");
+const FavoriteProducts = require("../models/FavoriteProducts");
+
 // Show search results from Spoonacular API
 exports.productResults = async (req, res) => {
     try {
@@ -57,6 +60,20 @@ exports.productInfo = async (req, res) => {
         };
 
         res.status(200).json(results);
+    } catch (err) {
+        console.error(err);
+        res.status(404);
+    }
+};
+
+exports.getFavoriteProducts = async (req, res) => {
+    try {
+        const favoriteProducts = await FavoriteProducts.find()
+            .populate("user")
+            .sort({ productName: "asc" })
+            .lean();
+
+        res.status(200).json(favoriteProducts);
     } catch (err) {
         console.error(err);
         res.status(404);
