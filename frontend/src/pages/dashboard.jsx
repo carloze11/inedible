@@ -1,17 +1,26 @@
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useSpoonacular } from "../hooks/useSpoonacular";
+import { useFavoriteProducts } from "../hooks/useFavoriteProducts";
 
 import Addbtn from "../components/Addbtn";
+import { useEffect } from "react";
 
 export default function Dashboard(props) {
     const user = useAuthContext();
     const userProps = user.user;
+    const { getFavoriteProducts, favoriteProducts, isLoading } =
+        useFavoriteProducts();
+
+    useEffect(() => {
+        getFavoriteProducts();
+    }, []);
 
     return (
         <div className="container">
             <h1 className="center">Dashboard</h1>
             <h4>Saved Products</h4>
 
-            {props.foods ? (
+            {favoriteProducts ? (
                 <table className="striped">
                     <thead>
                         <tr>
@@ -22,22 +31,17 @@ export default function Dashboard(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {props.foods.map((food) => {
+                        {favoriteProducts.map((product) => {
                             return (
-                                <tr key={food._id}>
+                                <tr key={product.productId}>
                                     <td>
                                         <a href={`/foods/${food._id}`}>
-                                            {food.foodName}
+                                            {product.productName}
                                         </a>
                                     </td>
                                     <td>
                                         <span className="dash-status">
-                                            {food.foodCategory}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span className="dash-status">
-                                            {food.ingredients.toUpperCase()}
+                                            {product.productDescription}
                                         </span>
                                     </td>
                                     <td>

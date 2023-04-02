@@ -5,7 +5,7 @@ export const useFavoriteProducts = () => {
     const [error, setError] = useState(null);
     const [favProducts, setFavProducts] = useState(null);
 
-    const favoriteProducts = async () => {
+    const getFavoriteProducts = async () => {
         setIsLoading(true);
 
         const response = await fetch(`/api/products/get-favorite-products`, {
@@ -24,5 +24,5 @@ export const useFavoriteProducts = () => {
             setIsLoading(false);
         }
     };
-    return { favoriteProducts, favProducts, isLoading, setIsLoading, error };
+    return { getFavoriteProducts, favProducts, isLoading, setIsLoading, error };
 };
