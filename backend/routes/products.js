@@ -4,7 +4,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const {
     productResults,
     productInfo,
-    updateFavoriteProducts,
+    getFavoriteProducts,
 } = require("../controllers/products");
 
 router.post("/results", productResults);
