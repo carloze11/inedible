@@ -9,6 +9,6 @@ const {
 
 router.post("/results", productResults);
 router.post("/results/:id", productInfo);
-router.post("/get-favorite-products", getFavoriteProducts);
+router.get("/get-favorite-products", getFavoriteProducts);
 
 module.exports = router;
