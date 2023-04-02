@@ -18,7 +18,7 @@ export default function SearchResults({ queryData }) {
     }, [pageScroll]);
 
     return (
-        <div>
+        <div className="container search-results">
             <h5>
                 '{total}' search results found for '{productSearch}'...
             </h5>
