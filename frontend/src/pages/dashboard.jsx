@@ -21,7 +21,7 @@ export default function Dashboard(props) {
                 <thead>
                     <tr>
                         <th>Food</th>
-                        <th>Category</th>
+                        <th>Description</th>
                         <th>Ingredients</th>
                         <th></th>
                     </tr>
@@ -41,13 +41,11 @@ export default function Dashboard(props) {
                                     </span>
                                 </td>
                                 <td>
-                                    <a
-                                        href={`/foods/edit/`}
-                                        className="btn btn-float"
-                                    >
-                                        <i className="fas fa-edit"></i>
-                                    </a>
-
+                                    <span className="dash-status">
+                                        {product.productIngredients}
+                                    </span>
+                                </td>
+                                <td>
                                     <form
                                         action={`/foods/`}
                                         method="POST"
