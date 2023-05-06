@@ -20,7 +20,7 @@ export default function Dashboard(props) {
             <table className="striped">
                 <thead>
                     <tr>
-                        <th>Food</th>
+                        <th>Product Name</th>
                         <th>Description</th>
                         <th>Ingredients</th>
                         <th></th>
@@ -70,7 +70,7 @@ export default function Dashboard(props) {
                 </tbody>
             </table>
         ) : (
-            <div className="card ">You got no food!</div>
+            <h5>You got no food!</h5>
         );
     };
 
